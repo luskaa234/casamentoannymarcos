@@ -1,302 +1,741 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#59663b" />
-  <meta name="description" content="Convite de casamento de Ihanny e Marcos Ryan." />
-  <meta name="color-scheme" content="light" />
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
-  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css?v=7" />
-  <title>Convite de Casamento — Ihanny & Marcos Ryan</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ihanny Gabrielly &amp; Marcos Ryan | 26.06.2027</title>
+<meta name="description" content="Convite de casamento de Ihanny Gabrielly e Marcos Ryan — 26 de junho de 2027, Chapadinha - MA.">
+<meta name="theme-color" content="#42502f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Mrs+Saint+Delafield&family=Parisienne&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde-escuro:#42502f;
+    --verde-medio:#748457;
+    --verde-claro:#aebd90;
+    --creme:#faf6ee;
+    --creme-2:#f2ecdd;
+    --dourado:#b28c4c;
+    --texto:#3a3f2e;
+    --linha:rgba(66,80,47,0.25);
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ overflow-x:hidden; }
+  html.is-locked, html.is-locked body{ overflow:hidden; height:100%; }
+
+  body{
+    margin:0;
+    background:var(--creme);
+    color:var(--texto);
+    font-family:'Cormorant Garamond', serif;
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  .page{
+    max-width:480px;
+    margin:0 auto;
+    position:relative;
+    background:var(--creme);
+    overflow:hidden;
+  }
+
+  .amp{ font-family:'Mrs Saint Delafield', cursive; color:var(--verde-escuro); font-weight:400; }
+  .amp--gold{ color:var(--dourado); }
+
+  .eyebrow, .eyebrow-cursive{ text-align:center; }
+  .eyebrow{
+    font-family:'Cinzel', serif;
+    font-size:.72rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--verde-medio);
+    margin:0 0 .8rem;
+  }
+  .eyebrow--gold{ color:var(--dourado); }
+  .eyebrow-cursive{
+    font-family:'Parisienne', cursive;
+    font-size:1.9rem;
+    color:var(--dourado);
+    margin:0 0 .6rem;
+  }
+
+  .btn-outline, .btn-gold, .btn-gift, .btn-copy{
+    font-family:'Cinzel', serif;
+    font-size:.74rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    text-decoration:none;
+    cursor:pointer;
+    border-radius:2px;
+    display:inline-block;
+    text-align:center;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn-outline{
+    padding:.85rem 1.6rem;
+    border:1px solid var(--verde-escuro);
+    color:var(--verde-escuro);
+    background:transparent;
+  }
+  .btn-outline:hover{ background:var(--verde-escuro); color:var(--creme); }
+  .btn-gold{
+    padding:1rem 2rem;
+    background:var(--dourado);
+    color:var(--creme);
+    border:1px solid var(--dourado);
+  }
+  .btn-gold:hover{ box-shadow:0 8px 20px rgba(178,140,76,.4); transform:translateY(-1px); }
+
+  /* ---------- Envelope overlay ---------- */
+  .envelope-overlay{
+    position:fixed; inset:0; z-index:999;
+    background:radial-gradient(120% 120% at 50% 0%, #4c5c37 0%, var(--verde-escuro) 55%, #38452a 100%);
+    color:var(--creme);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:2rem 1.5rem;
+    text-align:center;
+    transition:opacity .8s ease, visibility .8s ease;
+  }
+  .envelope-overlay.is-hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+
+  .envelope-title{
+    font-family:'Beau Rivage', cursive;
+    font-weight:400;
+    font-style:normal;
+    font-size:clamp(2.2rem, 9vw, 3rem);
+    line-height:1.25;
+    margin:0 0 .6rem;
+  }
+  .envelope-title .amp{ font-size:1.15em; padding:0 .05em; }
+  .envelope-subtitle{
+    font-family:'Cinzel', serif;
+    font-size:.72rem;
+    letter-spacing:.35em;
+    text-transform:uppercase;
+    color:var(--creme-2);
+    opacity:.85;
+    margin:0 0 2.4rem;
+  }
+
+  .envelope{
+    position:relative;
+    width:250px; height:168px;
+    margin:0 auto 2.2rem;
+    perspective:1400px;
+  }
+  .envelope-back{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, #f6f1e4, var(--creme-2));
+    border-radius:3px;
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+  }
+  .envelope-card{
+    position:absolute;
+    left:50%; top:56%;
+    width:78%; height:62%;
+    transform:translate(-50%,-6%);
+    background:var(--creme);
+    border:1px solid var(--linha);
+    border-radius:2px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:.35rem;
+    box-shadow:0 6px 16px rgba(0,0,0,.18);
+    transition:transform 1s cubic-bezier(.22,.9,.3,1);
+    z-index:2;
+  }
+  .envelope-card-monogram{
+    font-family:'Playfair Display', serif;
+    font-weight:600; font-style:normal;
+    font-size:1.5rem;
+    color:var(--verde-escuro);
+    margin:0;
+  }
+  .envelope-card-monogram .amp{ font-size:1.1em; }
+  .envelope-card-date{
+    font-family:'Cinzel', serif;
+    font-size:.68rem;
+    letter-spacing:.2em;
+    color:var(--verde-medio);
+    margin:0;
+  }
+  .envelope-pocket{
+    position:absolute; left:0; right:0; bottom:0; height:72%;
+    background:linear-gradient(180deg, var(--creme-2), #e9e0c8);
+    clip-path:polygon(0 100%, 0 22%, 50% 62%, 100% 22%, 100% 100%);
+    z-index:3;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.4);
+  }
+  .envelope-flap{
+    position:absolute; top:0; left:0; right:0; height:58%;
+    clip-path:polygon(0 0, 100% 0, 50% 100%);
+    background:linear-gradient(160deg, var(--verde-medio), var(--verde-escuro));
+    transform-origin:top center;
+    transform-style:preserve-3d;
+    transition:transform 1s cubic-bezier(.4,0,.2,1);
+    z-index:4;
+    display:flex; align-items:flex-start; justify-content:center;
+    padding-top:18%;
+  }
+  .envelope-seal{
+    width:56px; height:56px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #5c6d42, var(--verde-escuro) 60%, #313c22 100%);
+    border:1px solid rgba(255,255,255,.15);
+    color:var(--creme-2);
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    font-size:.85rem;
+    letter-spacing:.05em;
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    box-shadow:0 6px 14px rgba(0,0,0,.4), inset 0 1px 2px rgba(255,255,255,.25);
+    transition:transform .3s ease;
+    animation:sealPulse 2.6s ease-in-out infinite;
+  }
+  .envelope-seal:active{ transform:scale(.93); }
+  @keyframes sealPulse{
+    0%,100%{ box-shadow:0 6px 14px rgba(0,0,0,.4), inset 0 1px 2px rgba(255,255,255,.25), 0 0 0 0 rgba(250,246,238,0); }
+    50%{ box-shadow:0 6px 14px rgba(0,0,0,.4), inset 0 1px 2px rgba(255,255,255,.25), 0 0 0 8px rgba(250,246,238,0.08); }
+  }
+
+  .envelope.is-open .envelope-flap{ transform:rotateX(-165deg); }
+  .envelope.is-open .envelope-card{ transform:translate(-50%,-72%); }
+  .envelope.is-open .envelope-seal{ animation:none; opacity:0; transition:opacity .3s ease; }
+
+  .envelope-hint{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:.95rem;
+    color:var(--creme-2);
+    opacity:.85;
+    animation:blink 2.2s ease-in-out infinite;
+  }
+  @keyframes blink{ 0%,100%{opacity:.35;} 50%{opacity:.95;} }
+
+  .music-toggle{
+    position:fixed; top:1rem; right:1rem; z-index:1000;
+    width:42px; height:42px; border-radius:50%;
+    background:rgba(66,80,47,.85);
+    color:var(--creme);
+    border:1px solid rgba(250,246,238,.35);
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.1rem;
+    cursor:pointer;
+    backdrop-filter:blur(3px);
+  }
+  .music-toggle.is-paused{ opacity:.55; }
+
+  /* ---------- Sections shared ---------- */
+  .section{ padding:3.4rem 1.6rem; position:relative; }
+  .reveal{ opacity:0; transform:translateY(26px); transition:opacity .9s ease, transform .9s ease; }
+  .reveal.is-visible{ opacity:1; transform:none; }
+
+  .divider{ display:flex; align-items:center; justify-content:center; gap:.7rem; margin:1.4rem auto; width:180px; }
+  .divider-line{ flex:1; height:1px; background:var(--linha); }
+  .divider-diamond{ width:7px; height:7px; background:var(--dourado); transform:rotate(45deg); flex-shrink:0; }
+
+  .place-name{
+    font-family:'Playfair Display', serif;
+    font-style:italic; font-weight:500;
+    font-size:1.55rem;
+    text-align:center;
+    margin:.4rem 0 .5rem;
+    color:var(--verde-escuro);
+  }
+  .place-address, .place-sub, .place-datetime{
+    text-align:center;
+    margin:0 auto .4rem;
+    max-width:320px;
+    color:var(--texto);
+  }
+  .place-datetime{ font-family:'Cinzel', serif; font-size:.75rem; letter-spacing:.12em; color:var(--verde-medio); margin-bottom:1.6rem; }
+  .section--ceremony, .section--reception{ text-align:center; }
+  .section--reception{ background:var(--creme-2); }
+
+  .chapel-icon{ width:96px; margin:0 auto 1.2rem; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding-top:3.4rem; text-align:center; }
+  .hero-corner{ position:absolute; top:0; width:110px; opacity:.9; }
+  .hero-corner--left{ left:-6px; }
+  .hero-corner--right{ right:-6px; transform:scaleX(-1); }
+
+  .verse{
+    font-style:italic;
+    font-size:1.02rem;
+    max-width:340px;
+    margin:0 auto 1.6rem;
+    color:var(--verde-escuro);
+  }
+  .verse-ref{ display:inline-block; margin-top:.3rem; font-style:normal; font-family:'Cinzel', serif; font-size:.65rem; letter-spacing:.18em; color:var(--verde-medio); }
+
+  .blessing{ margin:0 0 1rem; font-size:1rem; }
+  .blessing em{ font-style:italic; font-weight:500; color:var(--verde-escuro); display:block; margin-top:.15rem; }
+  .invite-line{ margin:1.1rem 0 1.4rem; font-size:1rem; color:var(--texto); }
+
+  .couple-names{
+    font-family:'Beau Rivage', cursive;
+    font-weight:400; font-style:normal;
+    font-size:clamp(2.6rem, 11vw, 3.4rem);
+    line-height:1.15;
+    margin:0;
+    color:var(--verde-escuro);
+  }
+  .couple-names .amp{ display:block; font-size:.72em; margin:.1em 0; }
+
+  .date-label{ font-family:'Cinzel', serif; font-size:1.1rem; letter-spacing:.22em; text-transform:uppercase; margin:.3rem 0 .3rem; color:var(--verde-escuro); }
+  .time-label{ font-style:italic; margin:0 0 1.8rem; color:var(--verde-medio); }
+
+  .countdown{ display:flex; justify-content:center; gap:.6rem; margin:0 auto; max-width:340px; }
+  .countdown-item{
+    flex:1;
+    background:var(--creme-2);
+    border:1px solid var(--linha);
+    border-radius:4px;
+    padding:.7rem .3rem;
+  }
+  .countdown-num{ font-family:'Playfair Display', serif; font-weight:600; font-size:1.35rem; color:var(--verde-escuro); }
+  .countdown-label{ font-family:'Cinzel', serif; font-size:.55rem; letter-spacing:.14em; text-transform:uppercase; color:var(--verde-medio); margin-top:.2rem; }
+
+  /* ---------- Gifts ---------- */
+  .section--gifts{ background:var(--verde-escuro); color:var(--creme); text-align:center; }
+  .gifts-title{ font-family:'Playfair Display', serif; font-weight:600; font-size:1.5rem; margin:0 0 1rem; line-height:1.3; }
+  .gifts-text{ max-width:340px; margin:0 auto 2.2rem; color:var(--creme-2); }
+
+  .gift-cards{ display:flex; flex-direction:column; gap:1.4rem; margin-bottom:2rem; }
+  .gift-card{
+    position:relative;
+    background:var(--creme);
+    color:var(--texto);
+    border-radius:6px;
+    padding:2rem 1.2rem 1.6rem;
+    overflow:hidden;
+    box-shadow:0 14px 30px rgba(0,0,0,.25);
+  }
+  .ribbon{
+    position:absolute; top:14px; right:-34px;
+    background:var(--dourado); color:var(--creme);
+    font-family:'Cinzel', serif; font-size:.6rem; letter-spacing:.1em; text-transform:uppercase;
+    padding:.3rem 2.6rem;
+    transform:rotate(40deg);
+    box-shadow:0 2px 6px rgba(0,0,0,.25);
+  }
+  .gift-icon{ width:38px; height:38px; margin:0 auto .8rem; color:var(--verde-escuro); }
+  .gift-kicker{ font-family:'Cinzel', serif; font-size:.62rem; letter-spacing:.2em; color:var(--verde-medio); margin:0 0 .4rem; }
+  .gift-value{ font-family:'Playfair Display', serif; font-weight:600; font-style:italic; font-size:1.7rem; color:var(--verde-escuro); margin:0 0 .6rem; }
+  .gift-desc{ font-size:.92rem; max-width:260px; margin:0 auto 1.2rem; color:var(--texto); }
+  .btn-gift{ padding:.7rem 1.5rem; background:var(--verde-escuro); color:var(--creme); border:none; }
+  .btn-gift:hover{ background:var(--dourado); }
+
+  .pix-card{
+    background:var(--creme); color:var(--texto);
+    border-radius:6px; padding:2rem 1.4rem;
+    box-shadow:0 14px 30px rgba(0,0,0,.25);
+  }
+  .pix-label{ font-family:'Cinzel', serif; font-size:.65rem; letter-spacing:.18em; text-transform:uppercase; color:var(--verde-medio); margin:0 0 .5rem; }
+  .pix-key{ font-family:'Playfair Display', serif; font-weight:600; font-size:1.3rem; color:var(--verde-escuro); margin:0 0 1.2rem; }
+  .qr-img{ width:150px; margin:0 auto 1.2rem; border:8px solid var(--creme); box-shadow:0 4px 14px rgba(0,0,0,.15); border-radius:4px; }
+  .qr-caption{ font-size:.82rem; color:var(--verde-medio); margin:0 0 1.2rem; }
+
+  .toast{
+    position:fixed; left:50%; bottom:1.4rem; transform:translate(-50%, 20px);
+    background:var(--verde-escuro); color:var(--creme);
+    font-family:'Cormorant Garamond', serif; font-size:.95rem;
+    padding:.8rem 1.4rem; border-radius:30px;
+    box-shadow:0 10px 26px rgba(0,0,0,.35);
+    opacity:0; pointer-events:none;
+    transition:opacity .35s ease, transform .35s ease;
+    z-index:1200;
+    max-width:88%;
+    text-align:center;
+  }
+  .toast.is-visible{ opacity:1; transform:translate(-50%, 0); }
+
+  /* ---------- RSVP ---------- */
+  .section--rsvp{ text-align:center; }
+  .section--rsvp h2{ font-family:'Playfair Display', serif; font-weight:600; font-style:italic; font-size:1.7rem; color:var(--verde-escuro); margin:0 0 1.4rem; }
+  .section--rsvp p{ max-width:360px; margin:0 auto 1rem; }
+  .section--rsvp strong{ color:var(--dourado); }
+  .support-text{ font-size:.85rem; font-style:italic; color:var(--verde-medio); margin-top:1rem !important; }
+  .rsvp-qr{ width:120px; margin:1.6rem auto 0; opacity:.9; }
+
+  /* ---------- Manual ---------- */
+  .section--manual{ background:var(--creme-2); }
+  .manual-frame{
+    position:relative;
+    border:1px solid var(--linha);
+    padding:2.4rem 1.6rem;
+  }
+  .corner{ position:absolute; width:22px; height:22px; border:2px solid var(--dourado); }
+  .corner--tl{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .corner--tr{ top:-1px; right:-1px; border-left:none; border-bottom:none; }
+  .corner--bl{ bottom:-1px; left:-1px; border-right:none; border-top:none; }
+  .corner--br{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+
+  .manual-title{
+    text-align:center;
+    font-family:'Playfair Display', serif; font-weight:600; font-style:normal;
+    font-size:1.5rem; color:var(--verde-escuro);
+    margin:0 0 1.4rem;
+  }
+  .manual-title-cursive{ display:block; font-family:'Parisienne', cursive; font-weight:400; font-size:1.9rem; color:var(--dourado); margin-top:.15rem; }
+  .manual-intro{ text-align:center; max-width:340px; margin:0 auto 1.8rem; }
+
+  .manual-list{ list-style:none; margin:0 0 1.8rem; padding:0; display:flex; flex-direction:column; gap:1.1rem; }
+  .manual-list li{ display:flex; align-items:flex-start; gap:.85rem; }
+  .manual-icon{
+    flex-shrink:0; width:30px; height:30px; border-radius:50%;
+    background:var(--verde-escuro); color:var(--creme);
+    display:flex; align-items:center; justify-content:center;
+    font-size:.85rem;
+  }
+  .manual-label{ font-family:'Cinzel', serif; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--verde-escuro); margin:0 0 .2rem; }
+  .manual-desc{ font-size:.9rem; margin:0; color:var(--texto); }
+
+  .manual-closing{ text-align:center; margin:0 0 .4rem; }
+  .manual-closing-cursive{ text-align:center; font-family:'Mrs Saint Delafield', cursive; color:var(--dourado); font-size:1.5rem; margin:0; }
+
+  /* ---------- Footer ---------- */
+  .footer{ text-align:center; padding:2.6rem 1.6rem 3rem; }
+  .footer-label{ font-family:'Cinzel', serif; font-size:.65rem; letter-spacing:.28em; text-transform:uppercase; color:var(--verde-medio); margin:0 0 .6rem; }
+  .footer-monogram{ font-family:'Playfair Display', serif; font-weight:600; font-style:normal; font-size:1.6rem; color:var(--verde-escuro); margin:0; }
+  .footer-monogram .amp{ font-family:'Mrs Saint Delafield', cursive; }
+
+  @media (min-width:420px){
+    .gift-cards{ gap:1.6rem; }
+  }
+</style>
 </head>
 <body>
-  <div class="paper-grain" aria-hidden="true"></div>
+<div class="page">
 
-  <section class="opening-screen" id="openingScreen" aria-label="Abrir convite">
-    <div class="cover-noise" aria-hidden="true"></div>
-    <div class="cover-flap cover-flap--top" aria-hidden="true"></div>
-    <div class="cover-flap cover-flap--left" aria-hidden="true"></div>
-    <div class="cover-flap cover-flap--right" aria-hidden="true"></div>
-    <div class="cover-flap cover-flap--bottom" aria-hidden="true"></div>
-    <p class="cover-emboss">Convite de casamento</p>
-    <button class="wax-seal" id="openInvitation" type="button" aria-label="Abrir convite de Ihanny e Marcos Ryan">
-      <span class="wax-seal__monogram monogram" aria-label="Monograma I M"><span class="letter">I</span><span class="letter">M</span></span>
-      <span class="wax-seal__date">26 · 06 · 27</span>
-    </button>
-    <p class="cover-hint"><span></span> Toque no selo para abrir <span></span></p>
-  </section>
+  <!-- ===== Envelope overlay ===== -->
+  <div class="envelope-overlay" id="envelopeOverlay">
+    <h1 class="envelope-title">Ihanny Gabrielly <span class="amp amp--gold">&amp;</span> Marcos Ryan</h1>
+    <p class="envelope-subtitle">Convite de casamento</p>
 
-  <header class="site-header" id="siteHeader">
-    <div class="header-inner">
-      <a class="brand" href="#inicio" aria-label="Voltar ao início">
-        <span class="brand-mark monogram" aria-label="Monograma I M"><span class="letter">I</span><span class="letter">M</span></span>
-      </a>
-      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav" id="navMenu" aria-label="Navegação principal">
-        <a href="#inicio">Início</a>
-        <a href="#cerimonia">Cerimônia</a>
-                <a href="#presentes">Presentes</a>
-        <a href="#confirmacao">Confirmação</a>
-      </nav>
+    <div class="envelope" id="envelope">
+      <div class="envelope-back"></div>
+      <div class="envelope-card">
+        <p class="envelope-card-monogram">I <span class="amp">&amp;</span> M</p>
+        <p class="envelope-card-date">26 · 06 · 2027</p>
+      </div>
+      <div class="envelope-pocket"></div>
+      <div class="envelope-flap" id="envelopeFlap">
+        <button class="envelope-seal" id="envelopeSeal" aria-label="Toque para abrir o convite">I·M</button>
+      </div>
     </div>
-  </header>
 
-  <main id="mainContent">
-    <section class="hero" id="inicio">
-      <img class="corner corner--tl" src="assets/leaf-corner.svg" alt="" />
-      <img class="corner corner--br" src="assets/leaf-corner.svg" alt="" />
-      <div class="hero-orbit hero-orbit--one" aria-hidden="true"></div>
-      <div class="hero-orbit hero-orbit--two" aria-hidden="true"></div>
-
-      <div class="hero-panel container reveal">
-        <div class="hero-monogram monogram" aria-label="Monograma I M"><span class="letter">I</span><span class="letter">M</span></div>
-        <p class="eyebrow">Com a bênção de Deus e de seus pais</p>
-        <h1>Nosso casamento</h1>
-        <p class="script-name">Ihanny <span>&</span> Marcos Ryan</p>
-        <div class="flourish"><span></span><b>♥</b><span></span></div>
-        <p class="hero-question">Será uma alegria celebrar este dia tão especial ao lado de vocês.</p>
-        <blockquote>“Nem olhos viram, nem ouvidos ouviram o que Deus preparou para nós.” <cite>Coríntios 2:9</cite></blockquote>
-
-        <div class="hero-facts" aria-label="Resumo do casamento">
-          <div><span>Data</span><strong>26 de junho de 2027</strong></div>
-          <div><span>Horário</span><strong>16:00 horas</strong></div>
-          <div><span>Local</span><strong>Paróquia Cristo Rei</strong></div>
-        </div>
-
-        <div class="hero-actions">
-          <a class="primary-cta" href="#cerimonia">Ver detalhes</a>
-          <a class="secondary-cta" href="#presentes">Lista de presentes</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section ceremony" id="cerimonia">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">O grande dia</p>
-          <h2>Quando e onde</h2>
-          <p>Preparamos cada detalhe para viver esse momento ao lado de pessoas especiais.</p>
-        </div>
-
-        <div class="ceremony-grid">
-          <article class="detail-card reveal">
-            <div class="icon-ring" aria-hidden="true">26</div>
-            <h3>Sábado, 26 de junho de 2027</h3>
-            <p>às 16:00 horas</p>
-          </article>
-
-          <div class="church-wrap reveal">
-            <span class="church-caption">Cerimônia religiosa</span>
-            <img src="assets/church-watercolor.svg" alt="Ilustração em aquarela da igreja" />
-          </div>
-
-          <article class="detail-card reveal">
-            <div class="icon-ring icon-ring--church" aria-hidden="true">✟</div>
-            <h3>Paróquia Cristo Rei</h3>
-            <p>Augustinho Ribeiro, 212-248<br />Chapadinha - MA, 65500-000</p>
-            <a class="text-link" id="mapsLink" href="#" target="_blank" rel="noreferrer">Abrir no mapa →</a>
-          </article>
-        </div>
-
-        <div class="music-card reveal" id="musicCard">
-          <div class="album-art" aria-hidden="true"><span>IM</span></div>
-          <button class="play-button" id="playButton" type="button" aria-label="Reproduzir música">
-            <span id="playIcon">▶</span>
-          </button>
-          <div class="music-meta">
-            <strong>Turning Page</strong>
-            <span>Sleeping At Last · Instrumental</span>
-          </div>
-          <div class="waveform" aria-hidden="true">
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-          </div>
-          <span class="music-time" id="musicTime">00:00</span>
-          <audio id="weddingAudio" preload="metadata"></audio>
-        </div>
-      </div>
-    </section>
-
-    <section class="section actions" id="informacoes">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Com carinho para vocês</p>
-          <h2>Informações importantes</h2>
-          <p>Reunimos aqui os principais acessos para facilitar esse momento especial.</p>
-        </div>
-
-        <div class="action-grid">
-          <a class="action-card reveal" id="mapsCardLink" href="#" target="_blank" rel="noreferrer">
-            <span class="action-number">01</span>
-            <span class="action-icon">⌖</span>
-            <h3>Local da cerimônia</h3>
-            <p>Abra o mapa e veja a melhor rota para chegar à igreja.</p>
-            <span class="card-link">Acessar <b>→</b></span>
-          </a>
-
-          <a class="action-card reveal" href="#presentes">
-            <span class="action-number">02</span>
-            <span class="action-icon">♡</span>
-            <h3>Lista de presentes</h3>
-            <p>Escolha uma opção via Pix ou copie a chave para nos presentear.</p>
-            <span class="card-link">Ver opções <b>→</b></span>
-          </a>
-
-          <button class="action-card reveal" id="openRsvp" type="button">
-            <span class="action-number">03</span>
-            <span class="action-icon">✓</span>
-            <h3>Confirmar presença</h3>
-            <p>Confirme sua presença de forma rápida e prática pelo WhatsApp.</p>
-            <span class="card-link">Confirmar <b>→</b></span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section gifts" id="presentes">
-      <img class="gifts-leaf gifts-leaf--left" src="assets/leaf-corner.svg" alt="" />
-      <img class="gifts-leaf gifts-leaf--right" src="assets/leaf-corner.svg" alt="" />
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Lista de presentes</p>
-          <h2>Um carinho para nossa nova história</h2>
-          <p>A presença de vocês é o nosso maior presente. Para quem desejar nos presentear, preparamos algumas opções via Pix.</p>
-        </div>
-
-        <div class="gift-grid">
-          <button class="gift-card reveal" type="button" data-gift="150">
-            <span class="gift-ribbon">Com carinho</span>
-            <span class="gift-icon">♡</span>
-            <small>Presente especial</small>
-            <strong>R$ 150</strong>
-            <p>Um gesto de carinho para os primeiros detalhes do nosso lar.</p>
-            <span class="gift-button">Presentear</span>
-          </button>
-
-          <button class="gift-card gift-card--featured reveal" type="button" data-gift="200">
-            <span class="gift-ribbon">Mais escolhido</span>
-            <span class="gift-icon">✦</span>
-            <small>Presente especial</small>
-            <strong>R$ 200</strong>
-            <p>Uma contribuição para construirmos memórias na nossa nova fase.</p>
-            <span class="gift-button">Presentear</span>
-          </button>
-
-          <button class="gift-card reveal" type="button" data-gift="300">
-            <span class="gift-ribbon">Com amor</span>
-            <span class="gift-icon">♔</span>
-            <small>Presente especial</small>
-            <strong>R$ 300</strong>
-            <p>Um presente marcante para celebrar o início da nossa vida a dois.</p>
-            <span class="gift-button">Presentear</span>
-          </button>
-        </div>
-
-        <div class="pix-key-card reveal">
-          <div>
-            <span class="pix-label">Chave Pix</span>
-            <strong id="pixKeyDisplay">(98) 99158-5935</strong>
-            <small>Chave do tipo celular</small>
-          </div>
-          <button class="copy-button" id="copyPixKey" type="button">Copiar chave Pix</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="section save-date">
-      <div class="container save-date-grid">
-        <div class="save-copy reveal">
-          <p class="eyebrow">Save the date</p>
-          <h2>Reserve esta data</h2>
-          <p>Marque em sua agenda e faça parte do início da nossa história.</p>
-          <div class="countdown" id="countdown" aria-label="Contagem regressiva">
-            <div><strong id="days">000</strong><span>dias</span></div>
-            <div><strong id="hours">00</strong><span>horas</span></div>
-            <div><strong id="minutes">00</strong><span>minutos</span></div>
-            <div><strong id="seconds">00</strong><span>segundos</span></div>
-          </div>
-        </div>
-
-        <div class="calendar reveal" aria-label="Calendário de junho de 2027">
-          <div class="calendar-top"><span>Save the date</span><strong>Junho 2027</strong></div>
-          <div class="weekdays"><span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span></div>
-          <div class="dates">
-            <span></span><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
-            <span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
-            <span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span class="highlight">26</span>
-            <span>27</span><span>28</span><span>29</span><span>30</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section closing" id="confirmacao">
-      <div class="container reveal">
-        <div class="closing-monogram monogram" aria-label="Monograma I M"><span class="letter">I</span><span class="letter">M</span></div>
-        <p>Com amor,</p>
-        <h2>Ihanny <span>&</span> Marcos Ryan</h2>
-        <p class="closing-date">26 · 06 · 2027</p>
-        <button class="primary-cta" id="openRsvpBottom" type="button">Confirmar presença</button>
-      </div>
-    </section>
-  </main>
-
-  <div class="mobile-bar" aria-label="Ações rápidas">
-    <a id="mobileMap" href="#" target="_blank" rel="noreferrer"><span>⌖</span>Local</a>
-    <a href="#presentes"><span>♡</span>Presentes</a>
-    <button id="mobileRsvp" type="button"><span>✓</span>Confirmar</button>
+    <p class="envelope-hint">Toque no selo para abrir o convite</p>
   </div>
 
-  
+  <button class="music-toggle" id="musicToggle" aria-label="Pausar ou tocar música">♪</button>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="assets/turning-page-instrumental.mp3" type="audio/mpeg">
+  </audio>
 
-  <dialog class="modal" id="rsvpModal">
-    <button class="modal-close" type="button" data-close="rsvpModal" aria-label="Fechar">×</button>
-    <p class="eyebrow">Confirmação</p>
-    <h2>Esperamos vocês</h2>
-    <form id="rsvpForm">
-      <label>Nome completo<input id="guestName" name="name" type="text" autocomplete="name" required /></label>
-      <label>Vocês estarão presentes?
-        <select id="guestStatus" name="status" required>
-          <option value="">Selecione</option>
-          <option value="Sim, estaremos presentes">Sim, estaremos presentes</option>
-          <option value="Infelizmente não poderemos comparecer">Infelizmente não poderemos comparecer</option>
-        </select>
-      </label>
-      <label>Mensagem opcional<textarea id="guestMessage" name="message" rows="4" placeholder="Escreva uma mensagem para os noivos"></textarea></label>
-      <button class="primary-cta full" type="submit">Enviar confirmação</button>
-      <p class="form-note" id="formNote"></p>
-    </form>
-  </dialog>
+  <!-- ===== Hero ===== -->
+  <section class="hero reveal">
+    <svg class="hero-corner hero-corner--left" viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 4C22 10 40 22 50 40C58 54 60 68 56 84" stroke="#748457" stroke-width="1.6" stroke-linecap="round"/>
+      <ellipse cx="14" cy="12" rx="9" ry="4.5" fill="#aebd90" transform="rotate(-30 14 12)"/>
+      <ellipse cx="26" cy="20" rx="10" ry="5" fill="#748457" transform="rotate(-15 26 20)"/>
+      <ellipse cx="38" cy="30" rx="9" ry="4.5" fill="#aebd90" transform="rotate(10 38 30)"/>
+      <ellipse cx="47" cy="44" rx="10" ry="5" fill="#748457" transform="rotate(35 47 44)"/>
+      <ellipse cx="52" cy="60" rx="8" ry="4" fill="#aebd90" transform="rotate(60 52 60)"/>
+      <ellipse cx="8" cy="22" rx="6" ry="3" fill="#748457" transform="rotate(-55 8 22)"/>
+    </svg>
+    <svg class="hero-corner hero-corner--right" viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 4C22 10 40 22 50 40C58 54 60 68 56 84" stroke="#748457" stroke-width="1.6" stroke-linecap="round"/>
+      <ellipse cx="14" cy="12" rx="9" ry="4.5" fill="#aebd90" transform="rotate(-30 14 12)"/>
+      <ellipse cx="26" cy="20" rx="10" ry="5" fill="#748457" transform="rotate(-15 26 20)"/>
+      <ellipse cx="38" cy="30" rx="9" ry="4.5" fill="#aebd90" transform="rotate(10 38 30)"/>
+      <ellipse cx="47" cy="44" rx="10" ry="5" fill="#748457" transform="rotate(35 47 44)"/>
+      <ellipse cx="52" cy="60" rx="8" ry="4" fill="#aebd90" transform="rotate(60 52 60)"/>
+      <ellipse cx="8" cy="22" rx="6" ry="3" fill="#748457" transform="rotate(-55 8 22)"/>
+    </svg>
 
-  <dialog class="modal gift-modal" id="giftModal">
-    <button class="modal-close" type="button" data-close="giftModal" aria-label="Fechar">×</button>
-    <p class="eyebrow">Presente para os noivos</p>
-    <h2 id="giftModalTitle">Presentear com R$ 150</h2>
-    <p class="gift-modal-copy">Escaneie o QR Code no aplicativo do seu banco ou copie a chave Pix abaixo.</p>
-    <div class="gift-qr-wrap">
-      <img id="giftQr" src="assets/pix-150.png" alt="QR Code Pix" />
+    <p class="verse">"Nem olhos viram, nem ouvidos ouviram o que Deus preparou para nós. Um futuro certo cheio de esperança e paz."<span class="verse-ref">— Coríntios 2:9</span></p>
+
+    <p class="blessing">Com a bênção de Deus e de seus pais,
+      <em>Francisca e Antonio</em>
+      <em>Luciene e Francisco</em>
+    </p>
+
+    <p class="invite-line">convidam você para celebrar o amor e a união de</p>
+
+    <h2 class="couple-names">Ihanny Gabrielly<span class="amp">&amp;</span>Marcos Ryan</h2>
+
+    <div class="divider"><span class="divider-line"></span><span class="divider-diamond"></span><span class="divider-line"></span></div>
+
+    <p class="date-label">26 de junho de 2027</p>
+    <p class="time-label"><em>Sábado, às 16 horas</em></p>
+
+    <div class="countdown" id="countdown">
+      <div class="countdown-item"><div class="countdown-num" id="cdDays">00</div><div class="countdown-label">Dias</div></div>
+      <div class="countdown-item"><div class="countdown-num" id="cdHours">00</div><div class="countdown-label">Horas</div></div>
+      <div class="countdown-item"><div class="countdown-num" id="cdMin">00</div><div class="countdown-label">Min</div></div>
+      <div class="countdown-item"><div class="countdown-num" id="cdSec">00</div><div class="countdown-label">Seg</div></div>
     </div>
-    <div class="gift-summary">
-      <span>Valor</span><strong id="giftAmount">R$ 150,00</strong>
-      <span>Chave Pix</span><strong id="giftPixKey">(98) 99158-5935</strong>
-    </div>
-    <div class="gift-modal-actions">
-      <button class="primary-cta full" id="copyGiftPix" type="button">Copiar Pix copia e cola</button>
-      <button class="secondary-button full" id="copyGiftKey" type="button">Copiar apenas a chave</button>
-    </div>
-    <p class="form-note">Antes de concluir, confira no aplicativo do banco se o destinatário está correto.</p>
-  </dialog>
+  </section>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- ===== Cerimônia ===== -->
+  <section class="section section--ceremony reveal">
+    <p class="eyebrow-cursive">Cerimônia religiosa</p>
 
-  <script src="config.js?v=7"></script>
-  <script src="script.js?v=7"></script>
+    <svg class="chapel-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <rect x="18" y="70" width="52" height="34" fill="#f2ecdd" stroke="#42502f" stroke-width="2"/>
+      <polygon points="14,70 44,46 74,70" fill="#748457" stroke="#42502f" stroke-width="2" stroke-linejoin="round"/>
+      <rect x="76" y="30" width="16" height="74" fill="#f2ecdd" stroke="#42502f" stroke-width="2"/>
+      <polygon points="72,30 84,14 96,30" fill="#42502f" stroke="#42502f" stroke-width="2" stroke-linejoin="round"/>
+      <line x1="84" y1="4" x2="84" y2="16" stroke="#b28c4c" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="79" y1="9" x2="89" y2="9" stroke="#b28c4c" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M40 104V88a4 4 0 0 1 8 0v16" fill="#faf6ee" stroke="#42502f" stroke-width="2"/>
+      <path d="M27 78v-8a4 4 0 0 1 8 0v8" fill="#aebd90" stroke="#42502f" stroke-width="1.6"/>
+      <path d="M53 78v-8a4 4 0 0 1 8 0v8" fill="#aebd90" stroke="#42502f" stroke-width="1.6"/>
+      <path d="M80 62v-8a4 4 0 0 1 8 0v8" fill="#aebd90" stroke="#42502f" stroke-width="1.6"/>
+      <ellipse cx="16" cy="104" rx="10" ry="6" fill="#748457"/>
+      <ellipse cx="72" cy="106" rx="12" ry="6" fill="#748457"/>
+      <ellipse cx="96" cy="106" rx="9" ry="5.5" fill="#748457"/>
+    </svg>
+
+    <h2 class="place-name">Paróquia de Cristo Rei</h2>
+    <p class="place-address">Av. Augustinho Ribeiro, 212–248, Chapadinha – MA, 65500-000</p>
+    <p class="place-datetime">26 de junho de 2027 · 16h00</p>
+    <a class="btn-outline" href="https://www.google.com/maps/search/?api=1&query=Par%C3%B3quia%20Cristo%20Rei%20Augustinho%20Ribeiro%20212-248%20Chapadinha%20MA" target="_blank" rel="noopener">Ver localização</a>
+  </section>
+
+  <!-- ===== Recepção ===== -->
+  <section class="section section--reception reveal">
+    <p class="eyebrow">Festa</p>
+    <h2 class="place-name">Balneário Meireles</h2>
+    <p class="place-sub">Confraternização após a cerimônia</p>
+    <a class="btn-outline" href="https://www.google.com/maps/search/?api=1&query=Balneario%20Meireles%20Chapadinha%20MA" target="_blank" rel="noopener">Ver localização</a>
+  </section>
+
+  <!-- ===== Presentes ===== -->
+  <section class="section section--gifts reveal">
+    <p class="eyebrow eyebrow--gold">Lista de presentes</p>
+    <h2 class="gifts-title">Um carinho para nossa nova história</h2>
+    <p class="gifts-text">A presença de vocês é o nosso maior presente. Para quem desejar nos presentear, preparamos algumas opções via Pix.</p>
+
+    <div class="gift-cards">
+      <article class="gift-card">
+        <span class="ribbon">Com carinho</span>
+        <svg class="gift-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 42s-16-9.8-16-22a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 12.2-16 22-16 22H24z" fill="#42502f"/></svg>
+        <p class="gift-kicker">PRESENTE ESPECIAL</p>
+        <p class="gift-value">R$ 150,00</p>
+        <p class="gift-desc">Um gesto de carinho para os primeiros detalhes do nosso lar.</p>
+        <button class="btn-gift" data-amount="150.00" data-value-label="R$ 150,00">Presentear</button>
+      </article>
+
+      <article class="gift-card">
+        <span class="ribbon">Mais escolhido</span>
+        <svg class="gift-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4l6.2 12.6L44 18.6l-10 9.7 2.4 13.7L24 35.4 11.6 42l2.4-13.7-10-9.7 13.8-2z" fill="#42502f"/></svg>
+        <p class="gift-kicker">PRESENTE ESPECIAL</p>
+        <p class="gift-value">R$ 250,00</p>
+        <p class="gift-desc">Uma contribuição para construirmos memórias na nossa nova fase.</p>
+        <button class="btn-gift" data-amount="250.00" data-value-label="R$ 250,00">Presentear</button>
+      </article>
+
+      <article class="gift-card">
+        <span class="ribbon">Com amor</span>
+        <svg class="gift-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 16l8 6 10-12 10 12 8-6-3 20H9L6 16z" fill="#42502f"/><circle cx="6" cy="14" r="2.6" fill="#42502f"/><circle cx="24" cy="8" r="2.6" fill="#42502f"/><circle cx="42" cy="14" r="2.6" fill="#42502f"/></svg>
+        <p class="gift-kicker">PRESENTE ESPECIAL</p>
+        <p class="gift-value">R$ 350,00</p>
+        <p class="gift-desc">Um presente marcante para celebrar o início da nossa vida a dois.</p>
+        <button class="btn-gift" data-amount="350.00" data-value-label="R$ 350,00">Presentear</button>
+      </article>
+    </div>
+
+    <div class="pix-card">
+      <p class="pix-label">Chave Pix (celular)</p>
+      <p class="pix-key">(98) 99158-5935</p>
+      <img class="qr-img" src="assets/qr/qr-pix.png" alt="QR Code Pix para presentear Ihanny e Marcos">
+      <p class="qr-caption">Aponte a câmera para pagar via Pix</p>
+      <button class="btn-copy btn-outline" id="copyPixBtn" style="border-color:var(--dourado); color:var(--dourado);">Copiar chave Pix</button>
+    </div>
+  </section>
+
+  <!-- ===== RSVP ===== -->
+  <section class="section section--rsvp reveal">
+    <h2>Confirme sua presença</h2>
+    <p>Pedimos a gentileza de confirmar sua presença até o dia <strong>26/05</strong>. Sua confirmação é essencial para a organização do nosso grande dia.</p>
+    <p>Após essa data, infelizmente não poderemos aceitar novas confirmações, pois precisaremos finalizar a lista de convidados e informar a quantidade definitiva aos nossos fornecedores.</p>
+    <p>Agradecemos pela compreensão e esperamos celebrar esse momento tão especial com você!</p>
+    <a class="btn-gold" id="rsvpBtn" href="https://wa.me/5598991585935?text=Ol%C3%A1%21%20Confirmamos%20com%20alegria%20nossa%20presen%C3%A7a%20no%20casamento%20de%20Ihanny%20Gabrielly%20e%20Marcos%20Ryan%2C%20no%20dia%2026%2F06%2F2027.%20At%C3%A9%20l%C3%A1%21" target="_blank" rel="noopener">Confirmar presença</a>
+    <p class="support-text">Você será direcionado ao WhatsApp dos noivos</p>
+    <img class="rsvp-qr" src="assets/qr/qr-whatsapp.png" alt="QR Code para confirmar presença via WhatsApp">
+  </section>
+
+  <!-- ===== Manual do convidado ===== -->
+  <section class="section section--manual reveal">
+    <div class="manual-frame">
+      <span class="corner corner--tl"></span><span class="corner corner--tr"></span><span class="corner corner--bl"></span><span class="corner corner--br"></span>
+
+      <h2 class="manual-title">Querido(a)<span class="manual-title-cursive">convidado(a)</span></h2>
+      <p class="manual-intro">A sua presença é muito importante para nós e queremos que esse dia seja inesquecível para todos. Por isso, pedimos sua colaboração com os pontos abaixo.</p>
+
+      <ul class="manual-list">
+        <li><span class="manual-icon">✓</span><div><p class="manual-label">Confirme presença</p><p class="manual-desc">Nos ajude com a organização confirmando com antecedência.</p></div></li>
+        <li><span class="manual-icon">⏰</span><div><p class="manual-label">Seja pontual</p><p class="manual-desc">Chegue com antecedência para não perder nenhum momento.</p></div></li>
+        <li><span class="manual-icon">🙏</span><div><p class="manual-label">Participe da cerimônia</p><p class="manual-desc">Vivencie conosco cada instante desse momento sagrado.</p></div></li>
+        <li><span class="manual-icon">✉</span><div><p class="manual-label">Convite individual/familiar</p><p class="manual-desc">O convite é válido apenas para os nomes indicados.</p></div></li>
+        <li><span class="manual-icon">📵</span><div><p class="manual-label">Celular no silencioso</p><p class="manual-desc">Ajude a manter o clima de respeito durante a cerimônia.</p></div></li>
+        <li><span class="manual-icon">📷</span><div><p class="manual-label">Não atrapalhe os fotógrafos</p><p class="manual-desc">Evite circular na frente durante os registros oficiais.</p></div></li>
+        <li><span class="manual-icon">🤍</span><div><p class="manual-label">Não use branco</p><p class="manual-desc">Cor reservada exclusivamente à noiva.</p></div></li>
+        <li><span class="manual-icon">🌿</span><div><p class="manual-label">Evite o verde</p><p class="manual-desc">Cor reservada aos padrinhos.</p></div></li>
+        <li><span class="manual-icon">🚗</span><div><p class="manual-label">Se beber, não dirija</p><p class="manual-desc">Cuide de você e das pessoas ao seu redor.</p></div></li>
+        <li><span class="manual-icon">🎉</span><div><p class="manual-label">Aproveite e celebre</p><p class="manual-desc">Esse dia é uma festa do amor — divirta-se com a gente!</p></div></li>
+      </ul>
+
+      <p class="manual-closing">Obrigado por fazer parte da nossa história.</p>
+      <p class="manual-closing-cursive">Estamos ansiosos para viver esse dia ao seu lado!</p>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <p class="footer-label">Com amor</p>
+    <p class="footer-monogram">I <span class="amp">&amp;</span> M</p>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script>
+(function(){
+  document.documentElement.classList.add('is-locked');
+
+  var overlay = document.getElementById('envelopeOverlay');
+  var envelope = document.getElementById('envelope');
+  var seal = document.getElementById('envelopeSeal');
+  var audio = document.getElementById('bgMusic');
+  var musicToggle = document.getElementById('musicToggle');
+  var opened = false;
+
+  seal.addEventListener('click', function(){
+    if (opened) return;
+    opened = true;
+
+    // play must be triggered synchronously inside the click handler,
+    // before any setTimeout, or the browser's autoplay policy blocks it
+    audio.play().catch(function(){});
+
+    envelope.classList.add('is-open');
+
+    setTimeout(function(){
+      overlay.classList.add('is-hidden');
+      document.documentElement.classList.remove('is-locked');
+    }, 1500);
+  });
+
+  musicToggle.addEventListener('click', function(){
+    if (audio.paused){
+      audio.play().catch(function(){});
+      musicToggle.classList.remove('is-paused');
+    } else {
+      audio.pause();
+      musicToggle.classList.add('is-paused');
+    }
+  });
+
+  // ---- Countdown ----
+  var target = new Date('2027-06-26T16:00:00-03:00').getTime();
+  var elDays = document.getElementById('cdDays');
+  var elHours = document.getElementById('cdHours');
+  var elMin = document.getElementById('cdMin');
+  var elSec = document.getElementById('cdSec');
+
+  function pad(n){ return String(n).padStart(2, '0'); }
+
+  function tickCountdown(){
+    var diff = target - Date.now();
+    if (diff < 0) diff = 0;
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var min = Math.floor((diff % 3600000) / 60000);
+    var sec = Math.floor((diff % 60000) / 1000);
+    elDays.textContent = pad(days);
+    elHours.textContent = pad(hours);
+    elMin.textContent = pad(min);
+    elSec.textContent = pad(sec);
+  }
+  tickCountdown();
+  setInterval(tickCountdown, 1000);
+
+  // ---- Scroll reveal ----
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  // ---- Toast ----
+  var toast = document.getElementById('toast');
+  var toastTimer;
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('is-visible');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('is-visible'); }, 2600);
+  }
+
+  // ---- Copy Pix key ----
+  var PIX_KEY = '+5598991585935';
+  function copyText(text){
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function(resolve, reject){
+      try{
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        resolve();
+      }catch(err){ reject(err); }
+    });
+  }
+
+  document.getElementById('copyPixBtn').addEventListener('click', function(){
+    copyText(PIX_KEY).then(function(){
+      showToast('Chave Pix copiada!');
+    }).catch(function(){
+      showToast('Não foi possível copiar. Chave: ' + PIX_KEY);
+    });
+  });
+
+  document.querySelectorAll('.btn-gift').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var label = btn.getAttribute('data-value-label');
+      copyText(PIX_KEY).then(function(){
+        showToast('Chave Pix copiada! Valor sugerido: ' + label);
+      }).catch(function(){
+        showToast('Não foi possível copiar. Chave: ' + PIX_KEY);
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>

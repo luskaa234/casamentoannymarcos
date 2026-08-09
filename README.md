@@ -1,6 +1,6 @@
-# Convite de casamento — Ihanny & Marcos Ryan
+# Convite de casamento — Ihanny Gabrielly & Marcos Ryan
 
-Site mobile-first para convite de casamento.
+Site mobile-first, single-file (`index.html` com CSS/JS embutidos), para o convite de casamento do dia 26/06/2027.
 
 ## Rodar localmente
 
@@ -16,23 +16,30 @@ Abra no computador:
 http://localhost:5500
 ```
 
-No celular conectado à mesma rede Wi-Fi, abra o endereço de rede mostrado pelo `serve`, por exemplo:
+No celular conectado à mesma rede Wi-Fi, abra o endereço de rede mostrado pelo `serve`.
+
+## Estrutura
 
 ```text
-http://192.168.2.54:5500
-```
-
-## Música
-
-Adicione o arquivo instrumental licenciado em:
-
-```text
-assets/turning-page-instrumental.mp3
+index.html                    site completo (envelope, hero, cerimônia, recepção,
+                               presentes, RSVP, manual do convidado, rodapé)
+assets/turning-page-instrumental.mp3   música de fundo
+assets/qr/                    QR codes gerados (Pix e WhatsApp) + payloads
+print/gen_qrcodes.py          script que gera os QR codes (payload Pix EMV válido)
+print/                        entregáveis de impressão (PDF A4, cartão, instruções)
 ```
 
 ## Configurações
 
-Edite `config.js` para alterar WhatsApp, Pix, endereço e informações do convite.
+Chave Pix, nomes, endereço, links do WhatsApp e do Maps estão diretamente em `index.html`
+(constante `PIX_KEY` no script e nos elementos de texto/atributos `href`).
 
+Para regenerar os QR codes (por exemplo se a chave Pix mudar), edite os parâmetros no
+topo de `print/gen_qrcodes.py` e rode:
 
-Atualização v7: removidas referências aos padrinhos, monograma ajustado para I M e nome atualizado para Marcos Ryan.
+```powershell
+python print/gen_qrcodes.py
+```
+
+Isso atualiza `assets/qr/qr-pix.png` e `assets/qr/qr-whatsapp.png` — depois é só
+copiar os novos arquivos para o mesmo caminho referenciado no `index.html`.
