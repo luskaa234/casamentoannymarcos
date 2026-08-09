@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="title">
+  <title id="title">Monograma I M</title>
+  <defs>
+    <radialGradient id="bg" cx="35%" cy="28%" r="78%">
+      <stop offset="0" stop-color="#fffdf7"/>
+      <stop offset="1" stop-color="#f3eddf"/>
+    </radialGradient>
+  </defs>
+  <circle cx="100" cy="100" r="91" fill="url(#bg)" stroke="#c9a35d" stroke-width="3"/>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#c9a35d" stroke-width="1" opacity=".65"/>
+  <text x="73" y="115" text-anchor="middle" fill="#637044" font-family="Cormorant Garamond, Georgia, serif" font-size="54" font-style="italic" font-weight="700">I</text>
+  <text x="127" y="115" text-anchor="middle" fill="#637044" font-family="Cormorant Garamond, Georgia, serif" font-size="54" font-style="italic" font-weight="700">M</text>
+  <path d="M63 134c22 8 52 8 74 0" fill="none" stroke="#c9a35d" stroke-width="2" stroke-linecap="round"/>
+</svg>

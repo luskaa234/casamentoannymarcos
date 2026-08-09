@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#59663b" />
+  <meta name="description" content="Convite de casamento de Ihanny e Marcos Ryan." />
+  <meta name="color-scheme" content="light" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css?v=7" />
+  <title>Convite de Casamento — Ihanny & Marcos Ryan</title>
+</head>
+<body>
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <section class="opening-screen" id="openingScreen" aria-label="Abrir convite">
+    <div class="cover-noise" aria-hidden="true"></div>
+    <div class="cover-flap cover-flap--top" aria-hidden="true"></div>
+    <div class="cover-flap cover-flap--left" aria-hidden="true"></div>
+    <div class="cover-flap cover-flap--right" aria-hidden="true"></div>
+    <div class="cover-flap cover-flap--bottom" aria-hidden="true"></div>
+    <p class="cover-emboss">Convite de casamento</p>
+    <button class="wax-seal" id="openInvitation" type="button" aria-label="Abrir convite de Ihanny e Marcos Ryan">
+      <span class="wax-seal__monogram monogram" aria-label="Monograma I M"><span class="letter">I</span><span class="letter">M</span></span>
+      <span class="wax-seal__date">26 · 06 · 27</span>
+    </button>
+    <p class="cover-hint"><span></span> Toque no selo para abrir <span></span></p>
+  </section>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="Voltar ao início">
+        <span class="brand-mark monogram" aria-label="Monograma I M"><span class="letter">I</span><span class="letter">M</span></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="navMenu" aria-label="Navegação principal">
+        <a href="#inicio">Início</a>
+        <a href="#cerimonia">Cerimônia</a>
+                <a href="#presentes">Presentes</a>
+        <a href="#confirmacao">Confirmação</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <section class="hero" id="inicio">
+      <img class="corner corner--tl" src="assets/leaf-corner.svg" alt="" />
+      <img class="corner corner--br" src="assets/leaf-corner.svg" alt="" />
+      <div class="hero-orbit hero-orbit--one" aria-hidden="true"></div>
+      <div class="hero-orbit hero-orbit--two" aria-hidden="true"></div>
+
+      <div class="hero-panel container reveal">
+        <div class="hero-monogram monogram" aria-label="Monograma I M"><span class="letter">I</span><span class="letter">M</span></div>
+        <p class="eyebrow">Com a bênção de Deus e de seus pais</p>
+        <h1>Nosso casamento</h1>
+        <p class="script-name">Ihanny <span>&</span> Marcos Ryan</p>
+        <div class="flourish"><span></span><b>♥</b><span></span></div>
+        <p class="hero-question">Será uma alegria celebrar este dia tão especial ao lado de vocês.</p>
+        <blockquote>“Nem olhos viram, nem ouvidos ouviram o que Deus preparou para nós.” <cite>Coríntios 2:9</cite></blockquote>
+
+        <div class="hero-facts" aria-label="Resumo do casamento">
+          <div><span>Data</span><strong>26 de junho de 2027</strong></div>
+          <div><span>Horário</span><strong>16:00 horas</strong></div>
+          <div><span>Local</span><strong>Paróquia Cristo Rei</strong></div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="primary-cta" href="#cerimonia">Ver detalhes</a>
+          <a class="secondary-cta" href="#presentes">Lista de presentes</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ceremony" id="cerimonia">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">O grande dia</p>
+          <h2>Quando e onde</h2>
+          <p>Preparamos cada detalhe para viver esse momento ao lado de pessoas especiais.</p>
+        </div>
+
+        <div class="ceremony-grid">
+          <article class="detail-card reveal">
+            <div class="icon-ring" aria-hidden="true">26</div>
+            <h3>Sábado, 26 de junho de 2027</h3>
+            <p>às 16:00 horas</p>
+          </article>
+
+          <div class="church-wrap reveal">
+            <span class="church-caption">Cerimônia religiosa</span>
+            <img src="assets/church-watercolor.svg" alt="Ilustração em aquarela da igreja" />
+          </div>
+
+          <article class="detail-card reveal">
+            <div class="icon-ring icon-ring--church" aria-hidden="true">✟</div>
+            <h3>Paróquia Cristo Rei</h3>
+            <p>Augustinho Ribeiro, 212-248<br />Chapadinha - MA, 65500-000</p>
+            <a class="text-link" id="mapsLink" href="#" target="_blank" rel="noreferrer">Abrir no mapa →</a>
+          </article>
+        </div>
+
+        <div class="music-card reveal" id="musicCard">
+          <div class="album-art" aria-hidden="true"><span>IM</span></div>
+          <button class="play-button" id="playButton" type="button" aria-label="Reproduzir música">
+            <span id="playIcon">▶</span>
+          </button>
+          <div class="music-meta">
+            <strong>Turning Page</strong>
+            <span>Sleeping At Last · Instrumental</span>
+          </div>
+          <div class="waveform" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <span class="music-time" id="musicTime">00:00</span>
+          <audio id="weddingAudio" preload="metadata"></audio>
+        </div>
+      </div>
+    </section>
+
+    <section class="section actions" id="informacoes">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Com carinho para vocês</p>
+          <h2>Informações importantes</h2>
+          <p>Reunimos aqui os principais acessos para facilitar esse momento especial.</p>
+        </div>
+
+        <div class="action-grid">
+          <a class="action-card reveal" id="mapsCardLink" href="#" target="_blank" rel="noreferrer">
+            <span class="action-number">01</span>
+            <span class="action-icon">⌖</span>
+            <h3>Local da cerimônia</h3>
+            <p>Abra o mapa e veja a melhor rota para chegar à igreja.</p>
+            <span class="card-link">Acessar <b>→</b></span>
+          </a>
+
+          <a class="action-card reveal" href="#presentes">
+            <span class="action-number">02</span>
+            <span class="action-icon">♡</span>
+            <h3>Lista de presentes</h3>
+            <p>Escolha uma opção via Pix ou copie a chave para nos presentear.</p>
+            <span class="card-link">Ver opções <b>→</b></span>
+          </a>
+
+          <button class="action-card reveal" id="openRsvp" type="button">
+            <span class="action-number">03</span>
+            <span class="action-icon">✓</span>
+            <h3>Confirmar presença</h3>
+            <p>Confirme sua presença de forma rápida e prática pelo WhatsApp.</p>
+            <span class="card-link">Confirmar <b>→</b></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section gifts" id="presentes">
+      <img class="gifts-leaf gifts-leaf--left" src="assets/leaf-corner.svg" alt="" />
+      <img class="gifts-leaf gifts-leaf--right" src="assets/leaf-corner.svg" alt="" />
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Lista de presentes</p>
+          <h2>Um carinho para nossa nova história</h2>
+          <p>A presença de vocês é o nosso maior presente. Para quem desejar nos presentear, preparamos algumas opções via Pix.</p>
+        </div>
+
+        <div class="gift-grid">
+          <button class="gift-card reveal" type="button" data-gift="150">
+            <span class="gift-ribbon">Com carinho</span>
+            <span class="gift-icon">♡</span>
+            <small>Presente especial</small>
+            <strong>R$ 150</strong>
+            <p>Um gesto de carinho para os primeiros detalhes do nosso lar.</p>
+            <span class="gift-button">Presentear</span>
+          </button>
+
+          <button class="gift-card gift-card--featured reveal" type="button" data-gift="200">
+            <span class="gift-ribbon">Mais escolhido</span>
+            <span class="gift-icon">✦</span>
+            <small>Presente especial</small>
+            <strong>R$ 200</strong>
+            <p>Uma contribuição para construirmos memórias na nossa nova fase.</p>
+            <span class="gift-button">Presentear</span>
+          </button>
+
+          <button class="gift-card reveal" type="button" data-gift="300">
+            <span class="gift-ribbon">Com amor</span>
+            <span class="gift-icon">♔</span>
+            <small>Presente especial</small>
+            <strong>R$ 300</strong>
+            <p>Um presente marcante para celebrar o início da nossa vida a dois.</p>
+            <span class="gift-button">Presentear</span>
+          </button>
+        </div>
+
+        <div class="pix-key-card reveal">
+          <div>
+            <span class="pix-label">Chave Pix</span>
+            <strong id="pixKeyDisplay">(98) 99158-5935</strong>
+            <small>Chave do tipo celular</small>
+          </div>
+          <button class="copy-button" id="copyPixKey" type="button">Copiar chave Pix</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section save-date">
+      <div class="container save-date-grid">
+        <div class="save-copy reveal">
+          <p class="eyebrow">Save the date</p>
+          <h2>Reserve esta data</h2>
+          <p>Marque em sua agenda e faça parte do início da nossa história.</p>
+          <div class="countdown" id="countdown" aria-label="Contagem regressiva">
+            <div><strong id="days">000</strong><span>dias</span></div>
+            <div><strong id="hours">00</strong><span>horas</span></div>
+            <div><strong id="minutes">00</strong><span>minutos</span></div>
+            <div><strong id="seconds">00</strong><span>segundos</span></div>
+          </div>
+        </div>
+
+        <div class="calendar reveal" aria-label="Calendário de junho de 2027">
+          <div class="calendar-top"><span>Save the date</span><strong>Junho 2027</strong></div>
+          <div class="weekdays"><span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span></div>
+          <div class="dates">
+            <span></span><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+            <span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
+            <span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span class="highlight">26</span>
+            <span>27</span><span>28</span><span>29</span><span>30</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section closing" id="confirmacao">
+      <div class="container reveal">
+        <div class="closing-monogram monogram" aria-label="Monograma I M"><span class="letter">I</span><span class="letter">M</span></div>
+        <p>Com amor,</p>
+        <h2>Ihanny <span>&</span> Marcos Ryan</h2>
+        <p class="closing-date">26 · 06 · 2027</p>
+        <button class="primary-cta" id="openRsvpBottom" type="button">Confirmar presença</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="mobile-bar" aria-label="Ações rápidas">
+    <a id="mobileMap" href="#" target="_blank" rel="noreferrer"><span>⌖</span>Local</a>
+    <a href="#presentes"><span>♡</span>Presentes</a>
+    <button id="mobileRsvp" type="button"><span>✓</span>Confirmar</button>
+  </div>
+
+  
+
+  <dialog class="modal" id="rsvpModal">
+    <button class="modal-close" type="button" data-close="rsvpModal" aria-label="Fechar">×</button>
+    <p class="eyebrow">Confirmação</p>
+    <h2>Esperamos vocês</h2>
+    <form id="rsvpForm">
+      <label>Nome completo<input id="guestName" name="name" type="text" autocomplete="name" required /></label>
+      <label>Vocês estarão presentes?
+        <select id="guestStatus" name="status" required>
+          <option value="">Selecione</option>
+          <option value="Sim, estaremos presentes">Sim, estaremos presentes</option>
+          <option value="Infelizmente não poderemos comparecer">Infelizmente não poderemos comparecer</option>
+        </select>
+      </label>
+      <label>Mensagem opcional<textarea id="guestMessage" name="message" rows="4" placeholder="Escreva uma mensagem para os noivos"></textarea></label>
+      <button class="primary-cta full" type="submit">Enviar confirmação</button>
+      <p class="form-note" id="formNote"></p>
+    </form>
+  </dialog>
+
+  <dialog class="modal gift-modal" id="giftModal">
+    <button class="modal-close" type="button" data-close="giftModal" aria-label="Fechar">×</button>
+    <p class="eyebrow">Presente para os noivos</p>
+    <h2 id="giftModalTitle">Presentear com R$ 150</h2>
+    <p class="gift-modal-copy">Escaneie o QR Code no aplicativo do seu banco ou copie a chave Pix abaixo.</p>
+    <div class="gift-qr-wrap">
+      <img id="giftQr" src="assets/pix-150.png" alt="QR Code Pix" />
+    </div>
+    <div class="gift-summary">
+      <span>Valor</span><strong id="giftAmount">R$ 150,00</strong>
+      <span>Chave Pix</span><strong id="giftPixKey">(98) 99158-5935</strong>
+    </div>
+    <div class="gift-modal-actions">
+      <button class="primary-cta full" id="copyGiftPix" type="button">Copiar Pix copia e cola</button>
+      <button class="secondary-button full" id="copyGiftKey" type="button">Copiar apenas a chave</button>
+    </div>
+    <p class="form-note">Antes de concluir, confira no aplicativo do banco se o destinatário está correto.</p>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="config.js?v=7"></script>
+  <script src="script.js?v=7"></script>
+</body>
+</html>
