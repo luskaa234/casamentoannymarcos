@@ -21,8 +21,10 @@ No celular conectado à mesma rede Wi-Fi, abra o endereço de rede mostrado pelo
 ## Estrutura
 
 ```text
-index.html                    site completo (envelope, hero, cerimônia, recepção,
-                               presentes, RSVP, manual do convidado, rodapé)
+index.html                    site completo: envelope de abertura, hero (nomes/data),
+                               faixa de 4 ícones (cerimônia/recepção/presentes/RSVP —
+                               cada um abre um modal com o conteúdo), manual do
+                               convidado e rodapé
 assets/turning-page-instrumental.mp3   música de fundo
 assets/qr/                    QR codes gerados (Pix e WhatsApp) + payloads
 assets/paper-texture.png      textura de papel de fundo (embutida em base64 no index.html

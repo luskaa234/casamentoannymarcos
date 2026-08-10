@@ -264,10 +264,6 @@
   .reveal{ opacity:0; transform:translateY(26px); transition:opacity .9s ease, transform .9s ease; }
   .reveal.is-visible{ opacity:1; transform:none; }
 
-  .divider{ display:flex; align-items:center; justify-content:center; gap:.7rem; margin:1.4rem auto; width:180px; }
-  .divider-line{ flex:1; height:1px; background:var(--linha); }
-  .divider-diamond{ width:7px; height:7px; background:var(--dourado); transform:rotate(45deg); flex-shrink:0; }
-
   .place-name{
     font-family:'Playfair Display', serif;
     font-style:italic; font-weight:500;
@@ -283,16 +279,12 @@
     color:var(--texto);
   }
   .place-datetime{ font-family:'Cinzel', serif; font-size:.75rem; letter-spacing:.12em; color:var(--verde-medio); margin-bottom:1.6rem; }
-  .section--ceremony, .section--reception{ text-align:center; }
-  .section--reception{ background:var(--creme-2); }
 
   .chapel-icon{ width:96px; margin:0 auto 1.2rem; }
 
   /* ---------- Hero ---------- */
-  .hero{ padding-top:3.4rem; text-align:center; }
-  .hero-corner{ position:absolute; top:0; width:110px; opacity:.9; }
-  .hero-corner--left{ left:-6px; }
-  .hero-corner--right{ right:-6px; transform:scaleX(-1); }
+  .hero{ padding-top:3.4rem; text-align:center; position:relative; }
+  .hero-corner{ position:absolute; top:-10px; left:-12px; width:190px; opacity:.95; z-index:0; }
 
   .verse{
     font-style:italic;
@@ -317,10 +309,10 @@
   }
   .couple-names .amp{ display:block; font-size:.72em; margin:.1em 0; }
 
-  .date-label{ font-family:'Cinzel', serif; font-size:1.1rem; letter-spacing:.22em; text-transform:uppercase; margin:.3rem 0 .3rem; color:var(--verde-escuro); }
-  .time-label{ font-style:italic; margin:0 0 1.8rem; color:var(--verde-medio); }
+  .date-bold{ font-family:'Cormorant Garamond', serif; font-weight:600; font-size:1.25rem; margin:0 0 .2rem; color:var(--verde-escuro); }
+  .time-bold{ font-family:'Cormorant Garamond', serif; font-weight:600; font-size:1.1rem; margin:0; color:var(--verde-escuro); }
 
-  .countdown{ display:flex; justify-content:center; gap:.6rem; margin:0 auto; max-width:340px; }
+  .countdown{ display:flex; justify-content:center; gap:.6rem; margin:1.4rem auto 1.6rem; max-width:340px; }
   .countdown-item{
     flex:1;
     background:var(--creme-2);
@@ -331,8 +323,78 @@
   .countdown-num{ font-family:'Playfair Display', serif; font-weight:600; font-size:1.35rem; color:var(--verde-escuro); }
   .countdown-label{ font-family:'Cinzel', serif; font-size:.55rem; letter-spacing:.14em; text-transform:uppercase; color:var(--verde-medio); margin-top:.2rem; }
 
+  /* ---------- Ícones de navegação ---------- */
+  .icon-nav{ padding:0 1.6rem 3.4rem; text-align:center; }
+  .icon-nav-band{
+    background:rgba(66,80,47,.10);
+    color:var(--verde-escuro);
+    font-family:'Cinzel', serif; font-weight:600;
+    font-size:.78rem; letter-spacing:.03em;
+    padding:.75rem 1rem;
+    margin:0 -1.6rem 2rem;
+  }
+  .icon-nav-grid{ display:flex; justify-content:center; gap:.7rem; }
+  .icon-nav-item{
+    background:none; border:none; cursor:pointer; padding:0;
+    display:flex; flex-direction:column; align-items:center; gap:.6rem;
+    flex:1; max-width:100px;
+  }
+  .icon-nav-circle{
+    width:60px; height:60px; border-radius:50%;
+    background:var(--verde-medio); color:var(--creme);
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .2s ease, background .2s ease;
+    box-shadow:0 6px 14px rgba(66,80,47,.2);
+  }
+  .icon-nav-circle svg{ width:26px; height:26px; }
+  .icon-nav-item:hover .icon-nav-circle{ background:var(--verde-escuro); transform:translateY(-2px); }
+  .icon-nav-label{
+    font-family:'Cinzel', serif; font-weight:600;
+    font-size:.6rem; letter-spacing:.03em; text-transform:uppercase;
+    color:var(--verde-escuro); line-height:1.4;
+  }
+
+  /* ---------- Modais ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; z-index:1400;
+    background:rgba(58,63,46,.6);
+    display:flex; align-items:center; justify-content:center;
+    padding:1.5rem;
+    opacity:0; visibility:hidden;
+    transition:opacity .3s ease, visibility .3s ease;
+  }
+  .modal-overlay.is-open{ opacity:1; visibility:visible; }
+  .modal-card{
+    position:relative;
+    width:100%; max-width:420px; max-height:85vh; overflow-y:auto;
+    background-color:var(--creme);
+    background-image:var(--paper);
+    background-size:480px 480px;
+    background-repeat:repeat;
+    border-radius:10px;
+    padding:2.8rem 1.6rem 2.2rem;
+    text-align:center;
+    box-shadow:0 30px 70px rgba(0,0,0,.32);
+    transform:translateY(16px) scale(.98);
+    transition:transform .3s ease;
+  }
+  .modal-overlay.is-open .modal-card{ transform:translateY(0) scale(1); }
+  .modal-card--dark{ background-color:var(--verde-escuro); background-image:none; color:var(--creme); }
+  .modal-close{
+    position:absolute; top:.8rem; right:.8rem;
+    width:32px; height:32px; border-radius:50%;
+    background:rgba(66,80,47,.12); color:var(--verde-escuro);
+    border:none; font-size:.95rem; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    z-index:1;
+  }
+  .modal-card--dark .modal-close{ background:rgba(250,246,238,.16); color:var(--creme); }
+
+  .rsvp-title{ font-family:'Playfair Display', serif; font-weight:600; font-style:italic; font-size:1.6rem; color:var(--verde-escuro); margin:0 0 1rem; }
+  .rsvp-text{ max-width:340px; margin:0 auto 1rem; }
+  .rsvp-text strong{ color:var(--dourado); }
+
   /* ---------- Gifts ---------- */
-  .section--gifts{ background:var(--verde-escuro); color:var(--creme); text-align:center; }
   .gifts-title{ font-family:'Playfair Display', serif; font-weight:600; font-size:1.5rem; margin:0 0 1rem; line-height:1.3; }
   .gifts-text{ max-width:340px; margin:0 auto 2.2rem; color:var(--creme-2); }
 
@@ -385,11 +447,6 @@
   }
   .toast.is-visible{ opacity:1; transform:translate(-50%, 0); }
 
-  /* ---------- RSVP ---------- */
-  .section--rsvp{ text-align:center; }
-  .section--rsvp h2{ font-family:'Playfair Display', serif; font-weight:600; font-style:italic; font-size:1.7rem; color:var(--verde-escuro); margin:0 0 1.4rem; }
-  .section--rsvp p{ max-width:360px; margin:0 auto 1rem; }
-  .section--rsvp strong{ color:var(--dourado); }
   .support-text{ font-size:.85rem; font-style:italic; color:var(--verde-medio); margin-top:1rem !important; }
   .rsvp-qr{ width:120px; margin:1.6rem auto 0; opacity:.9; }
 
@@ -456,7 +513,8 @@
       border-radius:10px;
       box-shadow:0 40px 90px rgba(58,63,46,.22), 0 4px 14px rgba(58,63,46,.08);
     }
-    .verse, .gifts-text, .section--rsvp p, .manual-intro{ max-width:440px; }
+    .verse, .gifts-text, .rsvp-text, .manual-intro{ max-width:440px; }
+    .modal-card{ max-width:460px; }
     .place-address{ max-width:400px; }
   }
 
@@ -471,10 +529,8 @@
 
     .section{ padding:4.2rem 3rem; }
     .hero{ padding-top:4rem; }
-    .hero-corner{ width:140px; }
 
-    .gift-cards{ flex-direction:row; align-items:stretch; }
-    .gift-card{ flex:1; display:flex; flex-direction:column; }
+    .gift-card{ display:flex; flex-direction:column; }
     .gift-desc{ margin-top:auto; padding-top:.4rem; }
 
     .manual-frame{ padding:3.2rem 3.4rem; }
@@ -592,24 +648,7 @@
 
   <!-- ===== Hero ===== -->
   <section class="hero reveal">
-    <svg class="hero-corner hero-corner--left" viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 4C22 10 40 22 50 40C58 54 60 68 56 84" stroke="#748457" stroke-width="1.6" stroke-linecap="round"/>
-      <ellipse cx="14" cy="12" rx="9" ry="4.5" fill="#aebd90" transform="rotate(-30 14 12)"/>
-      <ellipse cx="26" cy="20" rx="10" ry="5" fill="#748457" transform="rotate(-15 26 20)"/>
-      <ellipse cx="38" cy="30" rx="9" ry="4.5" fill="#aebd90" transform="rotate(10 38 30)"/>
-      <ellipse cx="47" cy="44" rx="10" ry="5" fill="#748457" transform="rotate(35 47 44)"/>
-      <ellipse cx="52" cy="60" rx="8" ry="4" fill="#aebd90" transform="rotate(60 52 60)"/>
-      <ellipse cx="8" cy="22" rx="6" ry="3" fill="#748457" transform="rotate(-55 8 22)"/>
-    </svg>
-    <svg class="hero-corner hero-corner--right" viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M2 4C22 10 40 22 50 40C58 54 60 68 56 84" stroke="#748457" stroke-width="1.6" stroke-linecap="round"/>
-      <ellipse cx="14" cy="12" rx="9" ry="4.5" fill="#aebd90" transform="rotate(-30 14 12)"/>
-      <ellipse cx="26" cy="20" rx="10" ry="5" fill="#748457" transform="rotate(-15 26 20)"/>
-      <ellipse cx="38" cy="30" rx="9" ry="4.5" fill="#aebd90" transform="rotate(10 38 30)"/>
-      <ellipse cx="47" cy="44" rx="10" ry="5" fill="#748457" transform="rotate(35 47 44)"/>
-      <ellipse cx="52" cy="60" rx="8" ry="4" fill="#aebd90" transform="rotate(60 52 60)"/>
-      <ellipse cx="8" cy="22" rx="6" ry="3" fill="#748457" transform="rotate(-55 8 22)"/>
-    </svg>
+    <svg class="hero-corner" viewBox="0 0 300 300"><use href="#eucalyptusCorner"/></svg>
 
     <p class="verse">"Nem olhos viram, nem ouvidos ouviram o que Deus preparou para nós. Um futuro certo cheio de esperança e paz."<span class="verse-ref">— Coríntios 2:9</span></p>
 
@@ -618,111 +657,151 @@
       <em>Luciene e Francisco</em>
     </p>
 
-    <p class="invite-line">convidam você para celebrar o amor e a união de</p>
+    <p class="invite-line">Convidam você para celebrar o amor e a união de</p>
 
     <h2 class="couple-names">Ihanny Gabrielly<span class="amp">&amp;</span>Marcos Ryan</h2>
 
-    <div class="divider"><span class="divider-line"></span><span class="divider-diamond"></span><span class="divider-line"></span></div>
+    <p class="date-bold">Sábado, 26 de junho de 2027</p>
+    <p class="time-bold">|16:00hr|</p>
+  </section>
 
-    <p class="date-label">26 de junho de 2027</p>
-    <p class="time-label"><em>Sábado, às 16 horas</em></p>
-
-    <div class="countdown" id="countdown">
-      <div class="countdown-item"><div class="countdown-num" id="cdDays">00</div><div class="countdown-label">Dias</div></div>
-      <div class="countdown-item"><div class="countdown-num" id="cdHours">00</div><div class="countdown-label">Horas</div></div>
-      <div class="countdown-item"><div class="countdown-num" id="cdMin">00</div><div class="countdown-label">Min</div></div>
-      <div class="countdown-item"><div class="countdown-num" id="cdSec">00</div><div class="countdown-label">Seg</div></div>
+  <!-- ===== Navegação por ícones ===== -->
+  <section class="icon-nav reveal">
+    <p class="icon-nav-band">Toque nos ícones para interagir</p>
+    <div class="icon-nav-grid">
+      <button class="icon-nav-item" data-modal="modal-ceremony">
+        <span class="icon-nav-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V10L12 4l7 6v11"/><path d="M9 21v-5a3 3 0 016 0v5"/><path d="M12 4V1.6"/><path d="M10.6 2.3h2.8"/></svg>
+        </span>
+        <span class="icon-nav-label">Local da<br>Cerimônia</span>
+      </button>
+      <button class="icon-nav-item" data-modal="modal-reception">
+        <span class="icon-nav-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7.2"/><path d="M12 9.3c-1-.9-2.4-.4-2.4.9 0 1.3 2.4 2.7 2.4 2.7s2.4-1.4 2.4-2.7c0-1.3-1.4-1.8-2.4-.9z"/><path d="M4.2 6v4.4M4.2 6c-.9 0-.9 1.3 0 2M4.2 6c.9 0 .9 1.3 0 2M4.2 10.4V18"/><path d="M19.8 6c0 1.8-1.4 2.6-1.4 4.4V18"/></svg>
+        </span>
+        <span class="icon-nav-label">Local da<br>Recepção</span>
+      </button>
+      <button class="icon-nav-item" data-modal="modal-gifts">
+        <span class="icon-nav-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M4 10h16M12 10v10"/><path d="M12 10C10 7 6.5 7 6.5 9S9 10.5 12 10Z"/><path d="M12 10c2-3 5.5-3 5.5-1S15 10.5 12 10Z"/></svg>
+        </span>
+        <span class="icon-nav-label">Sugestão<br>Presentes</span>
+      </button>
+      <button class="icon-nav-item" data-modal="modal-rsvp">
+        <span class="icon-nav-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M9 8.6l2.1 2.1L15.5 6.5"/></svg>
+        </span>
+        <span class="icon-nav-label">Confirme sua<br>Presença</span>
+      </button>
     </div>
   </section>
 
-  <!-- ===== Cerimônia ===== -->
-  <section class="section section--ceremony reveal">
-    <p class="eyebrow-cursive">Cerimônia religiosa</p>
+  <!-- ===== Modal: Cerimônia ===== -->
+  <div class="modal-overlay" id="modal-ceremony">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Fechar">✕</button>
+      <p class="eyebrow-cursive">Cerimônia religiosa</p>
 
-    <svg class="chapel-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-      <rect x="18" y="70" width="52" height="34" fill="#f2ecdd" stroke="#42502f" stroke-width="2"/>
-      <polygon points="14,70 44,46 74,70" fill="#748457" stroke="#42502f" stroke-width="2" stroke-linejoin="round"/>
-      <rect x="76" y="30" width="16" height="74" fill="#f2ecdd" stroke="#42502f" stroke-width="2"/>
-      <polygon points="72,30 84,14 96,30" fill="#42502f" stroke="#42502f" stroke-width="2" stroke-linejoin="round"/>
-      <line x1="84" y1="4" x2="84" y2="16" stroke="#b28c4c" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="79" y1="9" x2="89" y2="9" stroke="#b28c4c" stroke-width="2.4" stroke-linecap="round"/>
-      <path d="M40 104V88a4 4 0 0 1 8 0v16" fill="#faf6ee" stroke="#42502f" stroke-width="2"/>
-      <path d="M27 78v-8a4 4 0 0 1 8 0v8" fill="#aebd90" stroke="#42502f" stroke-width="1.6"/>
-      <path d="M53 78v-8a4 4 0 0 1 8 0v8" fill="#aebd90" stroke="#42502f" stroke-width="1.6"/>
-      <path d="M80 62v-8a4 4 0 0 1 8 0v8" fill="#aebd90" stroke="#42502f" stroke-width="1.6"/>
-      <ellipse cx="16" cy="104" rx="10" ry="6" fill="#748457"/>
-      <ellipse cx="72" cy="106" rx="12" ry="6" fill="#748457"/>
-      <ellipse cx="96" cy="106" rx="9" ry="5.5" fill="#748457"/>
-    </svg>
+      <svg class="chapel-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="70" width="52" height="34" fill="#f2ecdd" stroke="#42502f" stroke-width="2"/>
+        <polygon points="14,70 44,46 74,70" fill="#748457" stroke="#42502f" stroke-width="2" stroke-linejoin="round"/>
+        <rect x="76" y="30" width="16" height="74" fill="#f2ecdd" stroke="#42502f" stroke-width="2"/>
+        <polygon points="72,30 84,14 96,30" fill="#42502f" stroke="#42502f" stroke-width="2" stroke-linejoin="round"/>
+        <line x1="84" y1="4" x2="84" y2="16" stroke="#b28c4c" stroke-width="2.4" stroke-linecap="round"/>
+        <line x1="79" y1="9" x2="89" y2="9" stroke="#b28c4c" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M40 104V88a4 4 0 0 1 8 0v16" fill="#faf6ee" stroke="#42502f" stroke-width="2"/>
+        <path d="M27 78v-8a4 4 0 0 1 8 0v8" fill="#aebd90" stroke="#42502f" stroke-width="1.6"/>
+        <path d="M53 78v-8a4 4 0 0 1 8 0v8" fill="#aebd90" stroke="#42502f" stroke-width="1.6"/>
+        <path d="M80 62v-8a4 4 0 0 1 8 0v8" fill="#aebd90" stroke="#42502f" stroke-width="1.6"/>
+        <ellipse cx="16" cy="104" rx="10" ry="6" fill="#748457"/>
+        <ellipse cx="72" cy="106" rx="12" ry="6" fill="#748457"/>
+        <ellipse cx="96" cy="106" rx="9" ry="5.5" fill="#748457"/>
+      </svg>
 
-    <h2 class="place-name">Paróquia de Cristo Rei</h2>
-    <p class="place-address">Av. Augustinho Ribeiro, 212–248, Chapadinha – MA, 65500-000</p>
-    <p class="place-datetime">26 de junho de 2027 · 16h00</p>
-    <a class="btn-outline" href="https://www.google.com/maps/search/?api=1&query=Par%C3%B3quia%20Cristo%20Rei%20Augustinho%20Ribeiro%20212-248%20Chapadinha%20MA" target="_blank" rel="noopener">Ver localização</a>
-  </section>
-
-  <!-- ===== Recepção ===== -->
-  <section class="section section--reception reveal">
-    <p class="eyebrow">Festa</p>
-    <h2 class="place-name">Balneário Meireles</h2>
-    <p class="place-sub">Confraternização após a cerimônia</p>
-    <a class="btn-outline" href="https://www.google.com/maps/search/?api=1&query=Balneario%20Meireles%20Chapadinha%20MA" target="_blank" rel="noopener">Ver localização</a>
-  </section>
-
-  <!-- ===== Presentes ===== -->
-  <section class="section section--gifts reveal">
-    <p class="eyebrow eyebrow--gold">Lista de presentes</p>
-    <h2 class="gifts-title">Um carinho para nossa nova história</h2>
-    <p class="gifts-text">A presença de vocês é o nosso maior presente. Para quem desejar nos presentear, preparamos algumas opções via Pix.</p>
-
-    <div class="gift-cards">
-      <article class="gift-card">
-        <span class="ribbon">Com carinho</span>
-        <svg class="gift-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 42s-16-9.8-16-22a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 12.2-16 22-16 22H24z" fill="#42502f"/></svg>
-        <p class="gift-kicker">PRESENTE ESPECIAL</p>
-        <p class="gift-value">R$ 150,00</p>
-        <p class="gift-desc">Um gesto de carinho para os primeiros detalhes do nosso lar.</p>
-        <button class="btn-gift" data-amount="150.00" data-value-label="R$ 150,00">Presentear</button>
-      </article>
-
-      <article class="gift-card">
-        <span class="ribbon">Mais escolhido</span>
-        <svg class="gift-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4l6.2 12.6L44 18.6l-10 9.7 2.4 13.7L24 35.4 11.6 42l2.4-13.7-10-9.7 13.8-2z" fill="#42502f"/></svg>
-        <p class="gift-kicker">PRESENTE ESPECIAL</p>
-        <p class="gift-value">R$ 250,00</p>
-        <p class="gift-desc">Uma contribuição para construirmos memórias na nossa nova fase.</p>
-        <button class="btn-gift" data-amount="250.00" data-value-label="R$ 250,00">Presentear</button>
-      </article>
-
-      <article class="gift-card">
-        <span class="ribbon">Com amor</span>
-        <svg class="gift-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 16l8 6 10-12 10 12 8-6-3 20H9L6 16z" fill="#42502f"/><circle cx="6" cy="14" r="2.6" fill="#42502f"/><circle cx="24" cy="8" r="2.6" fill="#42502f"/><circle cx="42" cy="14" r="2.6" fill="#42502f"/></svg>
-        <p class="gift-kicker">PRESENTE ESPECIAL</p>
-        <p class="gift-value">R$ 350,00</p>
-        <p class="gift-desc">Um presente marcante para celebrar o início da nossa vida a dois.</p>
-        <button class="btn-gift" data-amount="350.00" data-value-label="R$ 350,00">Presentear</button>
-      </article>
+      <h2 class="place-name">Paróquia de Cristo Rei</h2>
+      <p class="place-address">Av. Augustinho Ribeiro, 212–248, Chapadinha – MA, 65500-000</p>
+      <p class="place-datetime">26 de junho de 2027 · 16h00</p>
+      <a class="btn-outline" href="https://www.google.com/maps/search/?api=1&query=Par%C3%B3quia%20Cristo%20Rei%20Augustinho%20Ribeiro%20212-248%20Chapadinha%20MA" target="_blank" rel="noopener">Ver localização</a>
     </div>
+  </div>
 
-    <div class="pix-card">
-      <p class="pix-label">Chave Pix (celular)</p>
-      <p class="pix-key">(98) 99158-5935</p>
-      <img class="qr-img" src="assets/qr/qr-pix.png" alt="QR Code Pix para presentear Ihanny e Marcos">
-      <p class="qr-caption">Aponte a câmera para pagar via Pix</p>
-      <button class="btn-copy btn-outline" id="copyPixBtn" style="border-color:var(--dourado); color:var(--dourado);">Copiar chave Pix</button>
+  <!-- ===== Modal: Recepção ===== -->
+  <div class="modal-overlay" id="modal-reception">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Fechar">✕</button>
+      <p class="eyebrow">Festa</p>
+      <h2 class="place-name">Balneário Meireles</h2>
+      <p class="place-sub">Confraternização após a cerimônia</p>
+      <a class="btn-outline" href="https://www.google.com/maps/search/?api=1&query=Balneario%20Meireles%20Chapadinha%20MA" target="_blank" rel="noopener">Ver localização</a>
     </div>
-  </section>
+  </div>
 
-  <!-- ===== RSVP ===== -->
-  <section class="section section--rsvp reveal">
-    <h2>Confirme sua presença</h2>
-    <p>Pedimos a gentileza de confirmar sua presença até o dia <strong>26/05</strong>. Sua confirmação é essencial para a organização do nosso grande dia.</p>
-    <p>Após essa data, infelizmente não poderemos aceitar novas confirmações, pois precisaremos finalizar a lista de convidados e informar a quantidade definitiva aos nossos fornecedores.</p>
-    <p>Agradecemos pela compreensão e esperamos celebrar esse momento tão especial com você!</p>
-    <a class="btn-gold" id="rsvpBtn" href="https://wa.me/5598991585935?text=Ol%C3%A1%21%20Confirmamos%20com%20alegria%20nossa%20presen%C3%A7a%20no%20casamento%20de%20Ihanny%20Gabrielly%20e%20Marcos%20Ryan%2C%20no%20dia%2026%2F06%2F2027.%20At%C3%A9%20l%C3%A1%21" target="_blank" rel="noopener">Confirmar presença</a>
-    <p class="support-text">Você será direcionado ao WhatsApp dos noivos</p>
-    <img class="rsvp-qr" src="assets/qr/qr-whatsapp.png" alt="QR Code para confirmar presença via WhatsApp">
-  </section>
+  <!-- ===== Modal: Presentes ===== -->
+  <div class="modal-overlay" id="modal-gifts">
+    <div class="modal-card modal-card--dark">
+      <button class="modal-close" aria-label="Fechar">✕</button>
+      <p class="eyebrow eyebrow--gold">Lista de presentes</p>
+      <h2 class="gifts-title">Um carinho para nossa nova história</h2>
+      <p class="gifts-text">A presença de vocês é o nosso maior presente. Para quem desejar nos presentear, preparamos algumas opções via Pix.</p>
+
+      <div class="gift-cards">
+        <article class="gift-card">
+          <span class="ribbon">Com carinho</span>
+          <svg class="gift-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 42s-16-9.8-16-22a10 10 0 0 1 18-6 10 10 0 0 1 18 6c0 12.2-16 22-16 22H24z" fill="#42502f"/></svg>
+          <p class="gift-kicker">PRESENTE ESPECIAL</p>
+          <p class="gift-value">R$ 150,00</p>
+          <p class="gift-desc">Um gesto de carinho para os primeiros detalhes do nosso lar.</p>
+          <button class="btn-gift" data-amount="150.00" data-value-label="R$ 150,00">Presentear</button>
+        </article>
+
+        <article class="gift-card">
+          <span class="ribbon">Mais escolhido</span>
+          <svg class="gift-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4l6.2 12.6L44 18.6l-10 9.7 2.4 13.7L24 35.4 11.6 42l2.4-13.7-10-9.7 13.8-2z" fill="#42502f"/></svg>
+          <p class="gift-kicker">PRESENTE ESPECIAL</p>
+          <p class="gift-value">R$ 250,00</p>
+          <p class="gift-desc">Uma contribuição para construirmos memórias na nossa nova fase.</p>
+          <button class="btn-gift" data-amount="250.00" data-value-label="R$ 250,00">Presentear</button>
+        </article>
+
+        <article class="gift-card">
+          <span class="ribbon">Com amor</span>
+          <svg class="gift-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 16l8 6 10-12 10 12 8-6-3 20H9L6 16z" fill="#42502f"/><circle cx="6" cy="14" r="2.6" fill="#42502f"/><circle cx="24" cy="8" r="2.6" fill="#42502f"/><circle cx="42" cy="14" r="2.6" fill="#42502f"/></svg>
+          <p class="gift-kicker">PRESENTE ESPECIAL</p>
+          <p class="gift-value">R$ 350,00</p>
+          <p class="gift-desc">Um presente marcante para celebrar o início da nossa vida a dois.</p>
+          <button class="btn-gift" data-amount="350.00" data-value-label="R$ 350,00">Presentear</button>
+        </article>
+      </div>
+
+      <div class="pix-card">
+        <p class="pix-label">Chave Pix (celular)</p>
+        <p class="pix-key">(98) 99158-5935</p>
+        <img class="qr-img" src="assets/qr/qr-pix.png" alt="QR Code Pix para presentear Ihanny e Marcos">
+        <p class="qr-caption">Aponte a câmera para pagar via Pix</p>
+        <button class="btn-copy btn-outline" id="copyPixBtn" style="border-color:var(--dourado); color:var(--dourado);">Copiar chave Pix</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Modal: RSVP ===== -->
+  <div class="modal-overlay" id="modal-rsvp">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Fechar">✕</button>
+      <h2 class="rsvp-title">Confirme sua presença</h2>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item"><div class="countdown-num" id="cdDays">00</div><div class="countdown-label">Dias</div></div>
+        <div class="countdown-item"><div class="countdown-num" id="cdHours">00</div><div class="countdown-label">Horas</div></div>
+        <div class="countdown-item"><div class="countdown-num" id="cdMin">00</div><div class="countdown-label">Min</div></div>
+        <div class="countdown-item"><div class="countdown-num" id="cdSec">00</div><div class="countdown-label">Seg</div></div>
+      </div>
+      <p class="rsvp-text">Pedimos a gentileza de confirmar sua presença até o dia <strong>26/05</strong>. Sua confirmação é essencial para a organização do nosso grande dia.</p>
+      <p class="rsvp-text">Após essa data, infelizmente não poderemos aceitar novas confirmações, pois precisaremos finalizar a lista de convidados e informar a quantidade definitiva aos nossos fornecedores.</p>
+      <p class="rsvp-text">Agradecemos pela compreensão e esperamos celebrar esse momento tão especial com você!</p>
+      <a class="btn-gold" id="rsvpBtn" href="https://wa.me/5598991585935?text=Ol%C3%A1%21%20Confirmamos%20com%20alegria%20nossa%20presen%C3%A7a%20no%20casamento%20de%20Ihanny%20Gabrielly%20e%20Marcos%20Ryan%2C%20no%20dia%2026%2F06%2F2027.%20At%C3%A9%20l%C3%A1%21" target="_blank" rel="noopener">Confirmar presença</a>
+      <p class="support-text">Você será direcionado ao WhatsApp dos noivos</p>
+      <img class="rsvp-qr" src="assets/qr/qr-whatsapp.png" alt="QR Code para confirmar presença via WhatsApp">
+    </div>
+  </div>
 
   <!-- ===== Manual do convidado ===== -->
   <section class="section section--manual reveal">
@@ -835,6 +914,35 @@
   } else {
     revealEls.forEach(function(el){ el.classList.add('is-visible'); });
   }
+
+  // ---- Modais (cerimônia, recepção, presentes, RSVP) ----
+  function openModal(overlay){
+    overlay.classList.add('is-open');
+    document.documentElement.classList.add('is-locked');
+  }
+  function closeModal(overlay){
+    overlay.classList.remove('is-open');
+    document.documentElement.classList.remove('is-locked');
+  }
+  document.querySelectorAll('.icon-nav-item').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var overlay = document.getElementById(btn.getAttribute('data-modal'));
+      if (overlay) openModal(overlay);
+    });
+  });
+  document.querySelectorAll('.modal-overlay').forEach(function(overlay){
+    overlay.addEventListener('click', function(e){
+      if (e.target === overlay) closeModal(overlay);
+    });
+    var closeBtn = overlay.querySelector('.modal-close');
+    if (closeBtn) closeBtn.addEventListener('click', function(){ closeModal(overlay); });
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape'){
+      var open = document.querySelector('.modal-overlay.is-open');
+      if (open) closeModal(open);
+    }
+  });
 
   // ---- Toast ----
   var toast = document.getElementById('toast');
