@@ -393,8 +393,8 @@
     flex-shrink:0; width:30px; height:30px; border-radius:50%;
     background:var(--verde-escuro); color:var(--creme);
     display:flex; align-items:center; justify-content:center;
-    font-size:.85rem;
   }
+  .manual-icon svg{ width:16px; height:16px; }
   .manual-label{ font-family:'Cinzel', serif; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--verde-escuro); margin:0 0 .2rem; }
   .manual-desc{ font-size:.9rem; margin:0; color:var(--texto); }
 
@@ -409,6 +409,50 @@
 
   @media (min-width:420px){
     .gift-cards{ gap:1.6rem; }
+  }
+
+  /* ---------- Desktop / larger screens ---------- */
+  @media (min-width:700px){
+    body{
+      background:
+        radial-gradient(60% 50% at 15% 0%, rgba(174,189,144,.20), transparent 60%),
+        radial-gradient(55% 45% at 100% 10%, rgba(178,140,76,.12), transparent 60%),
+        linear-gradient(180deg, #eef0e3 0%, var(--creme) 22%);
+      min-height:100vh;
+      padding:3.5rem 1.5rem;
+    }
+    .page{
+      max-width:640px;
+      border-radius:10px;
+      box-shadow:0 40px 90px rgba(58,63,46,.22), 0 4px 14px rgba(58,63,46,.08);
+    }
+    .verse, .gifts-text, .section--rsvp p, .manual-intro{ max-width:440px; }
+    .place-address{ max-width:400px; }
+  }
+
+  @media (min-width:860px){
+    .page{ max-width:760px; }
+    body{ font-size:19px; }
+
+    .couple-names{ font-size:clamp(3.2rem, 5.2vw, 4.4rem); }
+    .envelope{ width:300px; height:200px; }
+    .envelope-seal{ width:64px; height:64px; font-size:.95rem; }
+    .envelope-title{ font-size:clamp(2.6rem, 4.4vw, 3.6rem); }
+
+    .section{ padding:4.2rem 3rem; }
+    .hero{ padding-top:4rem; }
+    .hero-corner{ width:140px; }
+
+    .gift-cards{ flex-direction:row; align-items:stretch; }
+    .gift-card{ flex:1; display:flex; flex-direction:column; }
+    .gift-desc{ margin-top:auto; padding-top:.4rem; }
+
+    .manual-frame{ padding:3.2rem 3.4rem; }
+    .manual-list{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:1.6rem 2.4rem;
+    }
   }
 </style>
 </head>
@@ -583,16 +627,16 @@
       <p class="manual-intro">A sua presença é muito importante para nós e queremos que esse dia seja inesquecível para todos. Por isso, pedimos sua colaboração com os pontos abaixo.</p>
 
       <ul class="manual-list">
-        <li><span class="manual-icon">✓</span><div><p class="manual-label">Confirme presença</p><p class="manual-desc">Nos ajude com a organização confirmando com antecedência.</p></div></li>
-        <li><span class="manual-icon">⏰</span><div><p class="manual-label">Seja pontual</p><p class="manual-desc">Chegue com antecedência para não perder nenhum momento.</p></div></li>
-        <li><span class="manual-icon">🙏</span><div><p class="manual-label">Participe da cerimônia</p><p class="manual-desc">Vivencie conosco cada instante desse momento sagrado.</p></div></li>
-        <li><span class="manual-icon">✉</span><div><p class="manual-label">Convite individual/familiar</p><p class="manual-desc">O convite é válido apenas para os nomes indicados.</p></div></li>
-        <li><span class="manual-icon">📵</span><div><p class="manual-label">Celular no silencioso</p><p class="manual-desc">Ajude a manter o clima de respeito durante a cerimônia.</p></div></li>
-        <li><span class="manual-icon">📷</span><div><p class="manual-label">Não atrapalhe os fotógrafos</p><p class="manual-desc">Evite circular na frente durante os registros oficiais.</p></div></li>
-        <li><span class="manual-icon">🤍</span><div><p class="manual-label">Não use branco</p><p class="manual-desc">Cor reservada exclusivamente à noiva.</p></div></li>
-        <li><span class="manual-icon">🌿</span><div><p class="manual-label">Evite o verde</p><p class="manual-desc">Cor reservada aos padrinhos.</p></div></li>
-        <li><span class="manual-icon">🚗</span><div><p class="manual-label">Se beber, não dirija</p><p class="manual-desc">Cuide de você e das pessoas ao seu redor.</p></div></li>
-        <li><span class="manual-icon">🎉</span><div><p class="manual-label">Aproveite e celebre</p><p class="manual-desc">Esse dia é uma festa do amor — divirta-se com a gente!</p></div></li>
+        <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l4.5 4.5L20 6"/></svg></span><div><p class="manual-label">Confirme presença</p><p class="manual-desc">Nos ajude com a organização confirmando com antecedência.</p></div></li>
+        <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4.5l3 2"/></svg></span><div><p class="manual-label">Seja pontual</p><p class="manual-desc">Chegue com antecedência para não perder nenhum momento.</p></div></li>
+        <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c1.6 2 1.6 3.6 0 5.2-1.6-1.6-1.6-3.2 0-5.2z" fill="currentColor" stroke="none"/><rect x="9.5" y="9" width="5" height="10" rx="1"/><path d="M8 19h8"/></svg></span><div><p class="manual-label">Participe da cerimônia</p><p class="manual-desc">Vivencie conosco cada instante desse momento sagrado.</p></div></li>
+        <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="1.5"/><path d="M3.5 7l8.5 6.5L20.5 7"/></svg></span><div><p class="manual-label">Convite individual/familiar</p><p class="manual-desc">O convite é válido apenas para os nomes indicados.</p></div></li>
+        <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0112 0v5"/><path d="M4 16h16"/><path d="M10 19a2 2 0 004 0"/><line x1="3" y1="3" x2="21" y2="21"/></svg></span><div><p class="manual-label">Celular no silencioso</p><p class="manual-desc">Ajude a manter o clima de respeito durante a cerimônia.</p></div></li>
+        <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8l1.6-2.4h4.8L16 8"/><circle cx="12" cy="14" r="3.2"/></svg></span><div><p class="manual-label">Não atrapalhe os fotógrafos</p><p class="manual-desc">Evite circular na frente durante os registros oficiais.</p></div></li>
+        <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><line x1="5.5" y1="18.5" x2="18.5" y2="5.5"/></svg></span><div><p class="manual-label">Não use branco</p><p class="manual-desc">Cor reservada exclusivamente à noiva.</p></div></li>
+        <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 19c0-9 6-14 13-14 0 8-5 13-13 13z"/><line x1="4" y1="20" x2="20" y2="4"/></svg></span><div><p class="manual-label">Evite o verde</p><p class="manual-desc">Cor reservada aos padrinhos.</p></div></li>
+        <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l1.3-4.3A2 2 0 017.2 10.3h9.6a2 2 0 011.9 1.4L20 16"/><rect x="3" y="16" width="18" height="4" rx="1.2"/><circle cx="7.5" cy="20" r="1.3" fill="currentColor" stroke="none"/><circle cx="16.5" cy="20" r="1.3" fill="currentColor" stroke="none"/></svg></span><div><p class="manual-label">Se beber, não dirija</p><p class="manual-desc">Cuide de você e das pessoas ao seu redor.</p></div></li>
+        <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 3l1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8z"/></svg></span><div><p class="manual-label">Aproveite e celebre</p><p class="manual-desc">Esse dia é uma festa do amor — divirta-se com a gente!</p></div></li>
       </ul>
 
       <p class="manual-closing">Obrigado por fazer parte da nossa história.</p>
