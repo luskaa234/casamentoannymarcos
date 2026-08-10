@@ -25,6 +25,8 @@ index.html                    site completo (envelope, hero, cerimônia, recepç
                                presentes, RSVP, manual do convidado, rodapé)
 assets/turning-page-instrumental.mp3   música de fundo
 assets/qr/                    QR codes gerados (Pix e WhatsApp) + payloads
+assets/paper-texture.png      textura de papel de fundo (embutida em base64 no index.html
+                               via a variável CSS --paper; este PNG é só a fonte/preview)
 print/gen_qrcodes.py          script que gera os QR codes (payload Pix EMV válido)
 print/                        entregáveis de impressão (PDF A4, cartão, instruções)
 ```
