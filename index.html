@@ -116,7 +116,7 @@
   .envelope-overlay.is-hidden{ opacity:0; visibility:hidden; pointer-events:none; }
 
   .envelope-corner{
-    position:absolute; width:150px; height:122px; z-index:-1;
+    position:absolute; width:195px; height:159px; z-index:-1;
     background-image:var(--corner-flowers);
     background-size:cover; background-position:top left;
     -webkit-mask-image:linear-gradient(135deg, black 30%, transparent 72%);
@@ -146,7 +146,7 @@
     color:var(--verde-escuro);
     margin:0 0 2.4rem;
   }
-  .envelope-title .amp{ font-size:1.1em; padding:0 .05em; color:var(--verde-escuro); }
+  .envelope-title .amp{ display:block; font-size:.7em; margin:.08em 0; color:var(--verde-escuro); }
 
   .envelope{
     position:relative;
@@ -299,9 +299,9 @@
   .chapel-icon{ width:96px; margin:0 auto 1.2rem; }
 
   /* ---------- Hero ---------- */
-  .hero{ padding-top:6.2rem; text-align:center; position:relative; z-index:0; }
+  .hero{ padding-top:8.4rem; text-align:center; position:relative; z-index:0; }
   .hero-corner{
-    position:absolute; top:-4px; left:-8px; width:118px; height:96px; z-index:-1;
+    position:absolute; top:-4px; left:-8px; width:155px; height:126px; z-index:-1;
     background-image:var(--corner-flowers);
     background-size:cover; background-position:top left;
     -webkit-mask-image:linear-gradient(135deg, black 30%, transparent 72%);
@@ -361,10 +361,11 @@
     box-shadow:0 14px 30px rgba(0,0,0,.25);
   }
   .ribbon{
-    position:absolute; top:14px; right:-34px;
+    position:absolute; top:22px; right:-44px;
     background:var(--dourado); color:var(--creme);
-    font-family:'Cinzel', serif; font-size:.6rem; letter-spacing:.1em; text-transform:uppercase;
-    padding:.3rem 2.6rem;
+    font-family:'Cinzel', serif; font-size:.58rem; letter-spacing:.08em; text-transform:uppercase;
+    white-space:nowrap;
+    padding:.3rem 2.4rem;
     transform:rotate(40deg);
     box-shadow:0 2px 6px rgba(0,0,0,.25);
   }
@@ -484,7 +485,7 @@
     .envelope-title{ font-size:clamp(2.6rem, 4.4vw, 3.6rem); }
 
     .section{ padding:4.2rem 3rem; }
-    .hero{ padding-top:6rem; }
+    .hero{ padding-top:8rem; }
 
     .gift-cards{ flex-direction:row; align-items:stretch; }
     .gift-card{ flex:1; display:flex; flex-direction:column; }
@@ -508,7 +509,7 @@
     <div class="envelope-corner envelope-corner--br"></div>
 
     <p class="envelope-eyebrow">CONVITE</p>
-    <h1 class="envelope-title">Ihanny Gabrielly <span class="amp">&amp;</span> Marcos Ryan</h1>
+    <h1 class="envelope-title">Ihanny Gabrielly<span class="amp">&amp;</span>Marcos Ryan</h1>
 
     <div class="envelope" id="envelope">
       <div class="envelope-paper"></div>
