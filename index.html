@@ -302,8 +302,8 @@
     background-image:var(--corner-flowers);
     background-size:cover; background-position:top left;
     transform:scaleX(-1);
-    -webkit-mask-image:linear-gradient(225deg, black 22%, transparent 66%);
-    mask-image:linear-gradient(225deg, black 22%, transparent 66%);
+    -webkit-mask-image:linear-gradient(135deg, black 22%, transparent 66%);
+    mask-image:linear-gradient(135deg, black 22%, transparent 66%);
     opacity:.85;
     pointer-events:none;
   }
@@ -664,6 +664,7 @@
       <img class="qr-img" src="assets/qr/qr-pix.png" alt="QR Code Pix para presentear Ihanny e Marcos">
       <p class="qr-caption">Aponte a câmera para pagar via Pix</p>
       <button class="btn-copy btn-outline" id="copyPixBtn" style="border-color:var(--dourado); color:var(--dourado);">Copiar chave Pix</button>
+      <button class="btn-copy btn-gold" id="confirmPaymentBtn" style="margin-top:.8rem;">Já paguei, confirmar</button>
     </div>
   </section>
 
@@ -695,7 +696,6 @@
         <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8l1.6-2.4h4.8L16 8"/><circle cx="12" cy="14" r="3.2"/></svg></span><div><p class="manual-label">Não atrapalhe os fotógrafos</p><p class="manual-desc">Evite circular na frente durante os registros oficiais.</p></div></li>
         <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><line x1="5.5" y1="18.5" x2="18.5" y2="5.5"/></svg></span><div><p class="manual-label">Não use branco</p><p class="manual-desc">Cor reservada exclusivamente à noiva.</p></div></li>
         <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 19c0-9 6-14 13-14 0 8-5 13-13 13z"/><line x1="4" y1="20" x2="20" y2="4"/></svg></span><div><p class="manual-label">Evite o verde</p><p class="manual-desc">Cor reservada aos padrinhos.</p></div></li>
-        <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16l1.3-4.3A2 2 0 017.2 10.3h9.6a2 2 0 011.9 1.4L20 16"/><rect x="3" y="16" width="18" height="4" rx="1.2"/><circle cx="7.5" cy="20" r="1.3" fill="currentColor" stroke="none"/><circle cx="16.5" cy="20" r="1.3" fill="currentColor" stroke="none"/></svg></span><div><p class="manual-label">Se beber, não dirija</p><p class="manual-desc">Cuide de você e das pessoas ao seu redor.</p></div></li>
         <li><span class="manual-icon"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 3l1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8z"/></svg></span><div><p class="manual-label">Aproveite e celebre</p><p class="manual-desc">Esse dia é uma festa do amor — divirta-se com a gente!</p></div></li>
       </ul>
 
@@ -803,6 +803,45 @@
 
   // ---- Copy Pix key ----
   var PIX_KEY = '+5598991585935';
+  var PIX_NAME = 'IHANNY GABRIELLY';
+  var PIX_CITY = 'CHAPADINHA';
+  var COUPLE_WHATSAPP = '5598991585935';
+  var lastGiftLabel = null;
+
+  function crc16(str){
+    var crc = 0xFFFF;
+    for (var i = 0; i < str.length; i++){
+      crc ^= (str.charCodeAt(i) << 8);
+      for (var j = 0; j < 8; j++){
+        crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) & 0xFFFF : (crc << 1) & 0xFFFF;
+      }
+    }
+    return crc.toString(16).toUpperCase().padStart(4, '0');
+  }
+
+  function tlv(id, value){
+    return id + String(value.length).padStart(2, '0') + value;
+  }
+
+  // Builds a Pix "Copia e Cola" (BR Code / EMV) payload, optionally with a fixed amount
+  // so the bank app pre-fills the value once the code is pasted into "Pix Copia e Cola".
+  function buildPixPayload(amount){
+    var merchantAccount = tlv('00', 'BR.GOV.BCB.PIX') + tlv('01', PIX_KEY);
+    var payload =
+      tlv('00', '01') +
+      tlv('01', '11') +
+      tlv('26', merchantAccount) +
+      tlv('52', '0000') +
+      tlv('53', '986') +
+      (amount ? tlv('54', Number(amount).toFixed(2)) : '') +
+      tlv('58', 'BR') +
+      tlv('59', PIX_NAME) +
+      tlv('60', PIX_CITY) +
+      tlv('62', tlv('05', '***')) +
+      '6304';
+    return payload + crc16(payload);
+  }
+
   function copyText(text){
     if (navigator.clipboard && navigator.clipboard.writeText){
       return navigator.clipboard.writeText(text);
@@ -832,13 +871,32 @@
 
   document.querySelectorAll('.btn-gift').forEach(function(btn){
     btn.addEventListener('click', function(){
+      var amount = btn.getAttribute('data-amount');
       var label = btn.getAttribute('data-value-label');
-      copyText(PIX_KEY).then(function(){
-        showToast('Chave Pix copiada! Valor sugerido: ' + label);
+      lastGiftLabel = label;
+      var payload = buildPixPayload(amount);
+
+      // On mobile, the native share sheet lets the guest pick their own bank app directly;
+      // most banking apps auto-detect a shared Pix "Copia e Cola" code and prefill the amount.
+      if (navigator.share){
+        navigator.share({ text: payload }).catch(function(){ /* user cancelled the share sheet */ });
+        return;
+      }
+
+      copyText(payload).then(function(){
+        showToast('Pix copiado com valor de ' + label + '! Cole no "Pix Copia e Cola" do seu banco.');
       }).catch(function(){
         showToast('Não foi possível copiar. Chave: ' + PIX_KEY);
       });
     });
+  });
+
+  // ---- Confirm payment via WhatsApp ----
+  document.getElementById('confirmPaymentBtn').addEventListener('click', function(){
+    var msg = 'Olá! Acabei de realizar o pagamento do presente via Pix';
+    if (lastGiftLabel) msg += ' no valor de ' + lastGiftLabel;
+    msg += '. Segue a confirmação! 🎁💛';
+    window.open('https://wa.me/' + COUPLE_WHATSAPP + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
   });
 })();
 </script>
