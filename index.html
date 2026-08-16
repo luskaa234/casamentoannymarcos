@@ -871,6 +871,9 @@
     });
   });
 
+  // Pix has no universal link that opens a bank app directly, so the guest always needs to
+  // either paste the "Copia e Cola" code inside their own bank's Pix screen or scan the QR
+  // code below. We copy the code and scroll to the QR/instructions so the next step is clear.
   document.querySelectorAll('.btn-gift').forEach(function(btn){
     btn.addEventListener('click', function(){
       var amount = btn.getAttribute('data-amount');
@@ -878,18 +881,13 @@
       lastGiftLabel = label;
       var payload = buildPixPayload(amount);
 
-      // On mobile, the native share sheet lets the guest pick their own bank app directly;
-      // most banking apps auto-detect a shared Pix "Copia e Cola" code and prefill the amount.
-      if (navigator.share){
-        navigator.share({ text: payload }).catch(function(){ /* user cancelled the share sheet */ });
-        return;
-      }
-
       copyText(payload).then(function(){
-        showToast('Pix copiado com valor de ' + label + '! Cole no "Pix Copia e Cola" do seu banco.');
+        showToast('Pix copiado com valor de ' + label + '! Abra o app do seu banco, escolha Pix Copia e Cola e cole o código.');
       }).catch(function(){
-        showToast('Não foi possível copiar. Chave: ' + PIX_KEY);
+        showToast('Não foi possível copiar. Use a chave: ' + PIX_KEY);
       });
+
+      document.querySelector('.pix-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
 
