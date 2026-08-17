@@ -297,19 +297,6 @@
   .section--ceremony, .section--reception{ text-align:center; }
   .section--reception{ background:var(--creme-2); }
 
-  .ceremony-corner{
-    position:absolute; top:6px; right:-10px; width:150px; height:122px; z-index:0;
-    background-image:var(--corner-flowers);
-    background-size:cover; background-position:top left;
-    transform:scaleX(-1);
-    -webkit-mask-image:linear-gradient(to bottom, black 0%, black 30%, transparent 88%), linear-gradient(to right, black 0%, black 32%, transparent 85%);
-    mask-image:linear-gradient(to bottom, black 0%, black 30%, transparent 88%), linear-gradient(to right, black 0%, black 32%, transparent 85%);
-    -webkit-mask-composite:source-over;
-    mask-composite:add;
-    opacity:.85;
-    pointer-events:none;
-  }
-
   .chapel-icon{ width:96px; margin:0 auto 1.2rem; }
 
   /* ---------- Hero ---------- */
@@ -592,7 +579,6 @@
 
   <!-- ===== Cerimônia ===== -->
   <section class="section section--ceremony reveal">
-    <div class="ceremony-corner"></div>
     <p class="eyebrow-cursive">Cerimônia religiosa</p>
 
     <svg class="chapel-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
