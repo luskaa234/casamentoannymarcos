@@ -624,7 +624,7 @@
         <p class="gift-kicker">PRESENTE ESPECIAL</p>
         <p class="gift-value">R$ 150,00</p>
         <p class="gift-desc">Um gesto de carinho para os primeiros detalhes do nosso lar.</p>
-        <button class="btn-gift" data-amount="150.00" data-value-label="R$ 150,00">Presentear</button>
+        <button class="btn-gift" data-amount="150.00" data-value-label="R$ 150,00" data-qr="assets/qr/qr-pix-150.jpg">Presentear</button>
       </article>
 
       <article class="gift-card">
@@ -633,7 +633,7 @@
         <p class="gift-kicker">PRESENTE ESPECIAL</p>
         <p class="gift-value">R$ 250,00</p>
         <p class="gift-desc">Uma contribuição para construirmos memórias na nossa nova fase.</p>
-        <button class="btn-gift" data-amount="250.00" data-value-label="R$ 250,00">Presentear</button>
+        <button class="btn-gift" data-amount="250.00" data-value-label="R$ 250,00" data-qr="assets/qr/qr-pix-250.jpg">Presentear</button>
       </article>
 
       <article class="gift-card">
@@ -642,15 +642,15 @@
         <p class="gift-kicker">PRESENTE ESPECIAL</p>
         <p class="gift-value">R$ 350,00</p>
         <p class="gift-desc">Um presente marcante para celebrar o início da nossa vida a dois.</p>
-        <button class="btn-gift" data-amount="350.00" data-value-label="R$ 350,00">Presentear</button>
+        <button class="btn-gift" data-amount="350.00" data-value-label="R$ 350,00" data-qr="assets/qr/qr-pix-350.jpg">Presentear</button>
       </article>
     </div>
 
     <div class="pix-card">
       <p class="pix-label">Chave Pix (celular)</p>
       <p class="pix-key">(98) 99158-5935</p>
-      <img class="qr-img" src="assets/qr/qr-pix.png" alt="QR Code Pix para presentear Ihanny e Marcos">
-      <p class="qr-caption">Aponte a câmera para pagar via Pix</p>
+      <img class="qr-img" id="pixQrImg" src="assets/qr/qr-pix-150.jpg" alt="QR Code Pix para presentear Ihanny e Marcos">
+      <p class="qr-caption" id="pixQrCaption">Escolha um valor acima e aponte a câmera para pagar via Pix</p>
       <button class="btn-copy btn-outline" id="copyPixBtn" style="border-color:var(--dourado); color:var(--dourado);">Copiar chave Pix</button>
       <button class="btn-copy btn-gold" id="confirmPaymentBtn" style="margin-top:.8rem;">Já paguei, confirmar</button>
     </div>
@@ -791,44 +791,8 @@
 
   // ---- Copy Pix key ----
   var PIX_KEY = '+5598991585935';
-  var PIX_NAME = 'IHANNY GABRIELLY';
-  var PIX_CITY = 'CHAPADINHA';
   var COUPLE_WHATSAPP = '5598991585935';
   var lastGiftLabel = null;
-
-  function crc16(str){
-    var crc = 0xFFFF;
-    for (var i = 0; i < str.length; i++){
-      crc ^= (str.charCodeAt(i) << 8);
-      for (var j = 0; j < 8; j++){
-        crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) & 0xFFFF : (crc << 1) & 0xFFFF;
-      }
-    }
-    return crc.toString(16).toUpperCase().padStart(4, '0');
-  }
-
-  function tlv(id, value){
-    return id + String(value.length).padStart(2, '0') + value;
-  }
-
-  // Builds a Pix "Copia e Cola" (BR Code / EMV) payload, optionally with a fixed amount
-  // so the bank app pre-fills the value once the code is pasted into "Pix Copia e Cola".
-  function buildPixPayload(amount){
-    var merchantAccount = tlv('00', 'BR.GOV.BCB.PIX') + tlv('01', PIX_KEY);
-    var payload =
-      tlv('00', '01') +
-      tlv('01', '11') +
-      tlv('26', merchantAccount) +
-      tlv('52', '0000') +
-      tlv('53', '986') +
-      (amount ? tlv('54', Number(amount).toFixed(2)) : '') +
-      tlv('58', 'BR') +
-      tlv('59', PIX_NAME) +
-      tlv('60', PIX_CITY) +
-      tlv('62', tlv('05', '***')) +
-      '6304';
-    return payload + crc16(payload);
-  }
 
   function copyText(text){
     if (navigator.clipboard && navigator.clipboard.writeText){
@@ -857,21 +821,22 @@
     });
   });
 
-  // Pix has no universal link that opens a bank app directly, so the guest always needs to
-  // either paste the "Copia e Cola" code inside their own bank's Pix screen or scan the QR
-  // code below. We copy the code and scroll to the QR/instructions so the next step is clear.
+  // Each gift value has its own pre-generated Pix QR (fixed amount). Clicking a value
+  // swaps in the matching QR image and scrolls the guest down to scan it.
+  var pixQrImg = document.getElementById('pixQrImg');
+  var pixQrCaption = document.getElementById('pixQrCaption');
   document.querySelectorAll('.btn-gift').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var amount = btn.getAttribute('data-amount');
       var label = btn.getAttribute('data-value-label');
+      var qrSrc = btn.getAttribute('data-qr');
       lastGiftLabel = label;
-      var payload = buildPixPayload(amount);
 
-      copyText(payload).then(function(){
-        showToast('Pix copiado com valor de ' + label + '! Abra o app do seu banco, escolha Pix Copia e Cola e cole o código.');
-      }).catch(function(){
-        showToast('Não foi possível copiar. Use a chave: ' + PIX_KEY);
-      });
+      if (qrSrc){
+        pixQrImg.src = qrSrc;
+        pixQrImg.alt = 'QR Code Pix de ' + label + ' para presentear Ihanny e Marcos';
+      }
+      pixQrCaption.textContent = 'Aponte a câmera para pagar ' + label + ' via Pix';
+      showToast('Escaneie o QR Code abaixo para presentear com ' + label + '!');
 
       document.querySelector('.pix-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
