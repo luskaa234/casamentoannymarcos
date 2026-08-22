@@ -385,7 +385,6 @@
   .pix-label{ font-family:'Cinzel', serif; font-size:.65rem; letter-spacing:.18em; text-transform:uppercase; color:var(--verde-medio); margin:0 0 .5rem; }
   .pix-key{ font-family:'Playfair Display', serif; font-weight:600; font-size:1.3rem; color:var(--verde-escuro); margin:0 0 1.2rem; }
   .pix-key a{ color:inherit; text-decoration:none; }
-  .qr-img{ width:150px; margin:0 auto 1.2rem; border:8px solid var(--creme); box-shadow:0 4px 14px rgba(0,0,0,.15); border-radius:4px; }
   .qr-caption{ font-size:.82rem; color:var(--verde-medio); margin:0 0 1.2rem; }
 
   .toast{
@@ -649,8 +648,7 @@
     <div class="pix-card">
       <p class="pix-label">Chave Pix (celular)</p>
       <p class="pix-key">(98) 99158-5935</p>
-      <img class="qr-img" id="pixQrImg" src="assets/qr/qr-pix-150.jpg" alt="QR Code Pix para presentear Ihanny e Marcos">
-      <p class="qr-caption" id="pixQrCaption">Escolha um valor acima e aponte a câmera para pagar via Pix</p>
+      <p class="qr-caption" id="pixQrCaption">Escolha um valor acima e copie a chave Pix para pagar</p>
       <button class="btn-copy btn-outline" id="copyPixBtn" style="border-color:var(--dourado); color:var(--dourado);">Copiar chave Pix</button>
       <button class="btn-copy btn-gold" id="confirmPaymentBtn" style="margin-top:.8rem;">Já paguei, confirmar</button>
     </div>
@@ -821,22 +819,15 @@
     });
   });
 
-  // Each gift value has its own pre-generated Pix QR (fixed amount). Clicking a value
-  // swaps in the matching QR image and scrolls the guest down to scan it.
-  var pixQrImg = document.getElementById('pixQrImg');
+  // Each gift value updates the caption below the Pix key when selected.
   var pixQrCaption = document.getElementById('pixQrCaption');
   document.querySelectorAll('.btn-gift').forEach(function(btn){
     btn.addEventListener('click', function(){
       var label = btn.getAttribute('data-value-label');
-      var qrSrc = btn.getAttribute('data-qr');
       lastGiftLabel = label;
 
-      if (qrSrc){
-        pixQrImg.src = qrSrc;
-        pixQrImg.alt = 'QR Code Pix de ' + label + ' para presentear Ihanny e Marcos';
-      }
-      pixQrCaption.textContent = 'Aponte a câmera para pagar ' + label + ' via Pix';
-      showToast('Escaneie o QR Code abaixo para presentear com ' + label + '!');
+      pixQrCaption.textContent = 'Copie a chave Pix acima para pagar ' + label;
+      showToast('Copie a chave Pix para presentear com ' + label + '!');
 
       document.querySelector('.pix-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
